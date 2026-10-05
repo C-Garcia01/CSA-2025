@@ -1,0 +1,105 @@
+{
+  "id": "apache/skywalking@fb7912c6:CVE-2020-13921",
+  "status": "validated",
+  "cwe": "CWE-89",
+  "repository": "apache/skywalking",
+  "kind": "synthetic_repair",
+  "review_status": "not_reviewed",
+  "accepted_attempt": 1,
+  "baseline": {
+    "status": "passed",
+    "checks": {
+      "build": {
+        "command": [
+          "mvn",
+          "-o",
+          "-q",
+          "-pl",
+          "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin",
+          "-Dcheckstyle.skip=true",
+          "-Drat.skip=true",
+          "-Dlicense.skip=true",
+          "-DskipTests",
+          "test-compile"
+        ],
+        "returncode": 0,
+        "timed_out": false
+      },
+      "test": {
+        "command": [
+          "mvn",
+          "-o",
+          "-q",
+          "-pl",
+          "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin",
+          "-Dcheckstyle.skip=true",
+          "-Drat.skip=true",
+          "-Dlicense.skip=true",
+          "-Dtest=AlarmFunctionalTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "test"
+        ],
+        "returncode": 0,
+        "timed_out": false
+      },
+      "security": {
+        "command": [
+          "python3",
+          "security_check.py"
+        ],
+        "returncode": 1,
+        "timed_out": false
+      }
+    }
+  },
+  "attempts": [
+    {
+      "number": 1,
+      "status": "passed",
+      "checks": {
+        "build": {
+          "command": [
+            "mvn",
+            "-o",
+            "-q",
+            "-pl",
+            "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin",
+            "-Dcheckstyle.skip=true",
+            "-Drat.skip=true",
+            "-Dlicense.skip=true",
+            "-DskipTests",
+            "test-compile"
+          ],
+          "returncode": 0,
+          "timed_out": false
+        },
+        "test": {
+          "command": [
+            "mvn",
+            "-o",
+            "-q",
+            "-pl",
+            "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin",
+            "-Dcheckstyle.skip=true",
+            "-Drat.skip=true",
+            "-Dlicense.skip=true",
+            "-Dtest=AlarmFunctionalTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "test"
+          ],
+          "returncode": 0,
+          "timed_out": false
+        },
+        "security": {
+          "command": [
+            "python3",
+            "security_check.py"
+          ],
+          "returncode": 0,
+          "timed_out": false
+        }
+      }
+    }
+  ],
+  "patch_sha256": "a202eb85d14510dbe3043a18676ecb0f9eecb5fa8eeeed8e9e0a53e044e555ae"
+}

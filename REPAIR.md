@@ -37,6 +37,10 @@ The original leaks a second table through a crafted id and fails the security pr
 
 The `security_check.py` adapter follows the marker contract below: it runs the injection probe test and reports the security property, not just the exit code. It is the template to replicate for real cases.
 
+## Worked example: a real VCC validated end to end
+
+`examples/skywalking_cve_2020_13921/` repairs a real historical VCC (Apache SkyWalking, CVE-2020-13921, CWE-89) through the full reproduce → repair → validate loop. The fix spans four JDBC query DAOs, so the repair is multi-file. `setup_scenario.py` rebuilds the prepared repository and scenario; the harness, the `gpt-6-astra` proposal, the validated patch and the run report are included. See that directory's README to run it. It needs JDK 8 and Maven.
+
 To inspect retrieval without running the project or a model:
 
 ```bash

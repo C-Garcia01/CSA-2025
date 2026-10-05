@@ -1,0 +1,66 @@
+diff --git c/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2AlarmQueryDAO.java w/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2AlarmQueryDAO.java
+index 0f4ff85086..ae1bd1beda 100644
+--- c/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2AlarmQueryDAO.java
++++ w/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2AlarmQueryDAO.java
+@@ -61,7 +61,8 @@ public class H2AlarmQueryDAO implements IAlarmQueryDAO {
+         }
+ 
+         if (!Strings.isNullOrEmpty(keyword)) {
+-            sql.append(" and ").append(AlarmRecord.ALARM_MESSAGE).append(" like '%").append(keyword).append("%' ");
++            sql.append(" and ").append(AlarmRecord.ALARM_MESSAGE).append(" like ? ");
++            parameters.add("%" + keyword + "%");
+         }
+         sql.append(" order by ").append(AlarmRecord.START_TIME).append(" desc ");
+ 
+diff --git c/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2MetadataQueryDAO.java w/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2MetadataQueryDAO.java
+index 2566ab2b5e..ee8044db34 100644
+--- c/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2MetadataQueryDAO.java
++++ w/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2MetadataQueryDAO.java
+@@ -125,7 +125,8 @@ public class H2MetadataQueryDAO implements IMetadataQueryDAO {
+         sql.append(ServiceTraffic.NODE_TYPE).append("=?");
+         condition.add(NodeType.Normal.value());
+         if (!Strings.isNullOrEmpty(keyword)) {
+-            sql.append(" and ").append(ServiceTraffic.NAME).append(" like \"%").append(keyword).append("%\"");
++            sql.append(" and ").append(ServiceTraffic.NAME).append(" like ?");
++            condition.add("%" + keyword + "%");
+         }
+         sql.append(" limit ").append(metadataQueryMaxSize);
+ 
+@@ -175,7 +176,8 @@ public class H2MetadataQueryDAO implements IMetadataQueryDAO {
+         sql.append(EndpointTraffic.SERVICE_ID).append("=?");
+         condition.add(serviceId);
+         if (!Strings.isNullOrEmpty(keyword)) {
+-            sql.append(" and ").append(EndpointTraffic.NAME).append(" like '%").append(keyword).append("%' ");
++            sql.append(" and ").append(EndpointTraffic.NAME).append(" like ? ");
++            condition.add("%" + keyword + "%");
+         }
+         sql.append(" limit ").append(limit);
+ 
+diff --git c/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2TraceQueryDAO.java w/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2TraceQueryDAO.java
+index 1928ef398e..370aac7642 100644
+--- c/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2TraceQueryDAO.java
++++ w/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2TraceQueryDAO.java
+@@ -82,7 +82,8 @@ public class H2TraceQueryDAO implements ITraceQueryDAO {
+             }
+         }
+         if (!Strings.isNullOrEmpty(endpointName)) {
+-            sql.append(" and ").append(SegmentRecord.ENDPOINT_NAME).append(" like '%" + endpointName + "%'");
++            sql.append(" and ").append(SegmentRecord.ENDPOINT_NAME).append(" like ?");
++            parameters.add("%" + endpointName + "%");
+         }
+         if (StringUtil.isNotEmpty(serviceId)) {
+             sql.append(" and ").append(SegmentRecord.SERVICE_ID).append(" = ?");
+diff --git c/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/mysql/MySQLAlarmQueryDAO.java w/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/mysql/MySQLAlarmQueryDAO.java
+index aea77c845d..57daef6c57 100644
+--- c/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/mysql/MySQLAlarmQueryDAO.java
++++ w/oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/mysql/MySQLAlarmQueryDAO.java
+@@ -61,7 +61,8 @@ public class MySQLAlarmQueryDAO implements IAlarmQueryDAO {
+         }
+ 
+         if (!Strings.isNullOrEmpty(keyword)) {
+-            sql.append(" and ").append(AlarmRecord.ALARM_MESSAGE).append(" like '%").append(keyword).append("%' ");
++            sql.append(" and ").append(AlarmRecord.ALARM_MESSAGE).append(" like ? ");
++            parameters.add("%" + keyword + "%");
+         }
+         sql.append(" order by ").append(AlarmRecord.START_TIME).append(" desc ");
+ 

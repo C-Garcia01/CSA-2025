@@ -1,0 +1,30 @@
+{
+  "summary": "Parameterize all five unsafe LIKE predicates across four DAOs, preserving substring searches and existing wildcard behavior. Both count and result queries use the bound values. No commands or tests were run.",
+  "edits": [
+    {
+      "path": "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2AlarmQueryDAO.java",
+      "old": "            sql.append(\" and \").append(AlarmRecord.ALARM_MESSAGE).append(\" like '%\").append(keyword).append(\"%' \");",
+      "new": "            sql.append(\" and \").append(AlarmRecord.ALARM_MESSAGE).append(\" like ? \");\n            parameters.add(\"%\" + keyword + \"%\");"
+    },
+    {
+      "path": "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2MetadataQueryDAO.java",
+      "old": "            sql.append(\" and \").append(ServiceTraffic.NAME).append(\" like \\\"%\").append(keyword).append(\"%\\\"\");",
+      "new": "            sql.append(\" and \").append(ServiceTraffic.NAME).append(\" like ?\");\n            condition.add(\"%\" + keyword + \"%\");"
+    },
+    {
+      "path": "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2MetadataQueryDAO.java",
+      "old": "            sql.append(\" and \").append(EndpointTraffic.NAME).append(\" like '%\").append(keyword).append(\"%' \");",
+      "new": "            sql.append(\" and \").append(EndpointTraffic.NAME).append(\" like ? \");\n            condition.add(\"%\" + keyword + \"%\");"
+    },
+    {
+      "path": "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2TraceQueryDAO.java",
+      "old": "            sql.append(\" and \").append(SegmentRecord.ENDPOINT_NAME).append(\" like '%\" + endpointName + \"%'\");",
+      "new": "            sql.append(\" and \").append(SegmentRecord.ENDPOINT_NAME).append(\" like ?\");\n            parameters.add(\"%\" + endpointName + \"%\");"
+    },
+    {
+      "path": "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/mysql/MySQLAlarmQueryDAO.java",
+      "old": "            sql.append(\" and \").append(AlarmRecord.ALARM_MESSAGE).append(\" like '%\").append(keyword).append(\"%' \");",
+      "new": "            sql.append(\" and \").append(AlarmRecord.ALARM_MESSAGE).append(\" like ? \");\n            parameters.add(\"%\" + keyword + \"%\");"
+    }
+  ]
+}
