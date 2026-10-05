@@ -8,7 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "examples"))
 
 from create_repair_demo import create_demo
-from repair_batch import discover, run_batch
+from repair_batch import discover, run_batch, run_manifest
 
 
 class BatchTests(unittest.TestCase):
@@ -36,6 +36,25 @@ class BatchTests(unittest.TestCase):
         summary = run_batch([self.root / "nope.json"], self.root / "out")
         self.assertEqual(summary["counts"]["error"], 1)
         self.assertIn("reason", summary["runs"][0])
+
+    def test_manifest_builds_prebuilt_and_setup_cases(self):
+        scenario = str(self.scenario)
+        manifest = self.root / "manifest.json"
+        manifest.write_text(json.dumps({"cases": [
+            {"id": "prebuilt", "scenario": scenario},
+            {"id": "viasetup", "setup": ["python3", "-c", "import sys; print(sys.argv[1])", scenario]},
+        ]}))
+        summary = run_manifest(manifest, self.root / "mout", prepare_only=True)
+        self.assertEqual(summary["total"], 2)
+        self.assertEqual(summary["counts"]["prepared"], 2)
+        self.assertEqual([r["id"] for r in summary["runs"]], ["prebuilt", "viasetup"])
+
+    def test_manifest_setup_failure_is_error_not_raised(self):
+        manifest = self.root / "manifest.json"
+        manifest.write_text(json.dumps({"cases": [{"id": "broken", "setup": ["false"]}]}))
+        summary = run_manifest(manifest, self.root / "mout")
+        self.assertEqual(summary["counts"]["error"], 1)
+        self.assertIn("Setup failed", summary["runs"][0]["reason"])
 
 
 if __name__ == "__main__":

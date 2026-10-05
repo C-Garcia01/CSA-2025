@@ -106,6 +106,12 @@ python src/repair_batch.py data/scenarios --output data/runs/batch-01 --corpus d
 
 Pass `--prepare-only` to export context and prompts without validation. Arguments may be scenario files or directories of them.
 
+To run real cases that must be built first, pass a manifest instead. Each case either names a prebuilt `scenario` or a `setup` command that builds one and prints its path (`{work}` is replaced with a per-case directory); a case may also carry its own `proposal` and `corpus`. `examples/real_vcc_batch.json` runs the SkyWalking example this way.
+
+```bash
+python src/repair_batch.py --manifest examples/real_vcc_batch.json --output data/runs/batch-real
+```
+
 ## Retrieval
 
 Repository context is selected explicitly from the supplied flow. Automatic source/sink discovery, call-graph expansion, and CodeQL integration are not implemented.

@@ -1,0 +1,11 @@
+{
+  "cases": [
+    {
+      "id": "skywalking-cve-2020-13921",
+      "setup": [
+        "python", "examples/skywalking_cve_2020_13921/setup_scenario.py", "{work}", "--install"
+      ],
+      "proposal": "examples/skywalking_cve_2020_13921/proposal.json"
+    }
+  ]
+}
