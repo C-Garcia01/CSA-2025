@@ -1,0 +1,13 @@
+{
+  "id": "replace-with-a-reviewed-repair-id",
+  "cwe": "CWE-89",
+  "repository_id": "owner/project",
+  "group": "CVE-or-shared-seed-group",
+  "reviewed": false,
+  "provenance": "URL and exact commit of the historical fix",
+  "mechanism": "Explain how input becomes executable SQL",
+  "before": "Relevant vulnerable code",
+  "after": "Corresponding repaired code",
+  "transformation": "Explain the repair and when it is applicable",
+  "validation": "Describe the actual tests and review evidence"
+}

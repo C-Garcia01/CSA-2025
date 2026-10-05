@@ -1,0 +1,151 @@
+{
+  "seed": "vcc-2026",
+  "group_counts": {
+    "rag": 10,
+    "dev": 4,
+    "test": 5
+  },
+  "coverage": [
+    {
+      "cwe": "CWE-15",
+      "csv_rows": 0,
+      "splits": {
+        "rag": 0,
+        "dev": 0,
+        "test": 0
+      },
+      "reviewed_rag_repairs": 0,
+      "has_dev_rows": false,
+      "has_test_rows": false,
+      "status": "missing_csv_examples"
+    },
+    {
+      "cwe": "CWE-78",
+      "csv_rows": 13,
+      "splits": {
+        "rag": 6,
+        "dev": 5,
+        "test": 2
+      },
+      "reviewed_rag_repairs": 1,
+      "has_dev_rows": true,
+      "has_test_rows": true,
+      "status": "needs_runtime_validation"
+    },
+    {
+      "cwe": "CWE-80",
+      "csv_rows": 4,
+      "splits": {
+        "rag": 1,
+        "dev": 1,
+        "test": 2
+      },
+      "reviewed_rag_repairs": 1,
+      "has_dev_rows": true,
+      "has_test_rows": true,
+      "status": "needs_runtime_validation"
+    },
+    {
+      "cwe": "CWE-81",
+      "csv_rows": 0,
+      "splits": {
+        "rag": 0,
+        "dev": 0,
+        "test": 0
+      },
+      "reviewed_rag_repairs": 0,
+      "has_dev_rows": false,
+      "has_test_rows": false,
+      "status": "missing_csv_examples"
+    },
+    {
+      "cwe": "CWE-83",
+      "csv_rows": 0,
+      "splits": {
+        "rag": 0,
+        "dev": 0,
+        "test": 0
+      },
+      "reviewed_rag_repairs": 0,
+      "has_dev_rows": false,
+      "has_test_rows": false,
+      "status": "missing_csv_examples"
+    },
+    {
+      "cwe": "CWE-89",
+      "csv_rows": 23,
+      "splits": {
+        "rag": 15,
+        "dev": 4,
+        "test": 4
+      },
+      "reviewed_rag_repairs": 1,
+      "has_dev_rows": true,
+      "has_test_rows": true,
+      "status": "needs_runtime_validation"
+    },
+    {
+      "cwe": "CWE-113",
+      "csv_rows": 4,
+      "splits": {
+        "rag": 2,
+        "dev": 0,
+        "test": 2
+      },
+      "reviewed_rag_repairs": 1,
+      "has_dev_rows": false,
+      "has_test_rows": true,
+      "status": "needs_runtime_validation"
+    },
+    {
+      "cwe": "CWE-129",
+      "csv_rows": 17,
+      "splits": {
+        "rag": 10,
+        "dev": 2,
+        "test": 5
+      },
+      "reviewed_rag_repairs": 1,
+      "has_dev_rows": true,
+      "has_test_rows": true,
+      "status": "needs_runtime_validation"
+    },
+    {
+      "cwe": "CWE-134",
+      "csv_rows": 2,
+      "splits": {
+        "rag": 2,
+        "dev": 0,
+        "test": 0
+      },
+      "reviewed_rag_repairs": 1,
+      "has_dev_rows": false,
+      "has_test_rows": false,
+      "status": "needs_runtime_validation"
+    },
+    {
+      "cwe": "CWE-606",
+      "csv_rows": 7,
+      "splits": {
+        "rag": 7,
+        "dev": 0,
+        "test": 0
+      },
+      "reviewed_rag_repairs": 1,
+      "has_dev_rows": false,
+      "has_test_rows": false,
+      "status": "needs_runtime_validation"
+    }
+  ],
+  "policy": "Disjoint repositories, CVEs, commit IDs and exact repair snippets",
+  "assignment": "Reserve reviewed RAG coverage, prioritize held-out CWE coverage, then 60/20/20 targets",
+  "limitations": [
+    "No historical runtime validation",
+    "Near-duplicate code not detected",
+    "Test references are evaluator-only; never pass them to the model"
+  ],
+  "input_sha256": {
+    "vcc_index.json": "5a84a2fbbf0b98d09acb56c88a481dc69e3514f0bdb4831f78cce3a4ddfdc4ed",
+    "candidates.jsonl": "8c88bcf57bda10181314bc770ace891b670a36f83cfa06386329baa4ae5de7dc"
+  }
+}

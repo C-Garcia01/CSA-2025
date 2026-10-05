@@ -1,0 +1,139 @@
+{
+  "repairs": [
+    {
+      "id": "apache/ranger@8618870d1b4acfae4114dd247a362cfa8493ab9e:CVE-2016-2174",
+      "cwe": "CWE-89",
+      "files": [
+        "security-admin/src/main/java/org/apache/ranger/common/DateUtil.java",
+        "security-admin/src/main/java/org/apache/ranger/db/XXDataHistDao.java",
+        "security-admin/src/main/resources/META-INF/jpa_named_queries.xml"
+      ],
+      "mechanism": "An eventTime string is concatenated into a native SQL query for historical object lookup. User-controlled query values can become SQL syntax.",
+      "transformation": "Parse the event time into a Date and bind classType, objectId, and createTime as named-query parameters. Keep query declarations and DAO callers consistent. This pattern applies to values, not arbitrary SQL identifiers. Date parsing and rejection behavior need their own tests.",
+      "validation": "Assistant source review of the DAO, DateUtil, and named-query XML at the CSV-linked fix. Before/after snapshots are downloaded from exact revisions. No project build or security regression test executed; VCC labels remain CSV assertions.",
+      "reviewer": "Codex source inspection, not independent human review",
+      "review_date": "2026-10-04"
+    },
+    {
+      "id": "spring-projects/spring-data-jpa@b8e7fecccc7dc8edcabb4704656a7abe6352c08f:CVE-2016-6652",
+      "cwe": "CWE-89",
+      "files": [
+        "src/main/java/org/springframework/data/jpa/repository/query/QueryUtils.java",
+        "src/main/java/org/springframework/data/jpa/domain/JpaSort.java"
+      ],
+      "mechanism": "Sort property expressions are appended to a JPQL ORDER BY clause. Function expressions and whitespace can change query structure.",
+      "transformation": "Validate ordinary sort expressions before building ORDER BY clauses, preserve property and function-alias sorting, and distinguish explicit JpaSort.unsafe developer opt-in. Do not route untrusted input through that unsafe opt-in. This is structural-expression validation, not a substitute for binding query values.",
+      "validation": "Assistant inspected QueryUtils/JpaSort changes and the added QueryUtilsUnitTests/JpaSortTests in the fixing commit. Tests reject whitespace/function expressions while retaining supported aliases. Tests were inspected, not executed. This does not validate the historical VCC assertions.",
+      "reviewer": "Codex source inspection, not independent human review",
+      "review_date": "2026-10-04"
+    },
+    {
+      "id": "apache/skywalking@fb7912c6bdda06a233f4b3e18e71a87d3e4a8951:CVE-2020-13921",
+      "cwe": "CWE-89",
+      "files": [
+        "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2AlarmQueryDAO.java",
+        "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2MetadataQueryDAO.java",
+        "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/h2/dao/H2TraceQueryDAO.java",
+        "oap-server/server-storage-plugin/storage-jdbc-hikaricp-plugin/src/main/java/org/apache/skywalking/oap/server/storage/plugin/jdbc/mysql/MySQLAlarmQueryDAO.java"
+      ],
+      "mechanism": "Search keyword and endpointName strings are concatenated into SQL LIKE predicates in several query DAOs.",
+      "transformation": "Replace direct input concatenation with LIKE concat('%',?,'%') and append each value to the matching parameter list in order. Update every affected query path. Adapt placeholder syntax to the actual database API. Binding prevents SQL syntax injection but does not make percent and underscore literal LIKE characters.",
+      "validation": "Assistant inspected all four changed DAO files. The commit changes query construction and parameter lists together. No added tests in this commit and no runtime validation performed; this is a source-reviewed historical pattern, not a proven complete fix.",
+      "reviewer": "Codex source inspection, not independent human review",
+      "review_date": "2026-10-04"
+    },
+    {
+      "id": "undertow-io/undertow@85d4478e598105fe94ac152d3e11e388374e8b86:CVE-2018-1067",
+      "cwe": "CWE-113",
+      "files": [
+        "core/src/main/java/io/undertow/server/protocol/http/HttpResponseConduit.java"
+      ],
+      "mechanism": "A response-header serializer checks a Java char for CR/LF before narrowing it to a byte. A different non-ASCII character can become CR/LF after conversion.",
+      "transformation": "Validate the byte actually written after narrowing, replacing forbidden CR/LF bytes as this serializer requires. Preserve ordinary header serialization. Test non-ASCII values whose low byte is CR or LF as well as literal delimiters. This is specific to the serializer's encoding behavior.",
+      "validation": "Assistant inspected the writeString patch: the char is converted to a byte before checking CR/LF and writing. No tests were added in this commit and no project tests were executed.",
+      "reviewer": "Codex source inspection, not independent human review",
+      "review_date": "2026-10-04"
+    },
+    {
+      "id": "apache/tomcat@5bc4e6d7b1c22dc1bf99f475b7e70594ebdd83b9:CVE-2019-0232",
+      "cwe": "CWE-78",
+      "files": [
+        "java/org/apache/catalina/servlets/CGIServlet.java",
+        "conf/web.xml"
+      ],
+      "mechanism": "With CGI command-line arguments enabled on Windows, query-string arguments can remain unsafe after URL decoding despite checks on their encoded representation.",
+      "transformation": "Check each decoded CGI argument against a platform-appropriate allowed pattern before adding it to command parameters. Keep configuration defaults and documentation consistent. Preserve valid CGI behavior. The allow-any override removes this protection; this is not a universal shell sanitizer.",
+      "validation": "Assistant inspected the CGI code, web.xml, CGI how-to and changelog. The changelog explicitly associates the patch with CVE-2019-0232. Windows execution and project tests were not performed.",
+      "reviewer": "Codex source inspection, not independent human review",
+      "review_date": "2026-10-04"
+    },
+    {
+      "id": "apache/struts@885ab3459e146ff830d1f7257f809f4a3dd4493a:CVE-2011-1772",
+      "cwe": "CWE-80",
+      "files": [
+        "xwork-core/src/main/java/com/opensymphony/xwork2/DefaultActionProxy.java"
+      ],
+      "mechanism": "Unescaped action and method names are stored for later output.",
+      "transformation": "Historical patch applies HTML escaping to actionName and HTML then JavaScript escaping to methodName. Context-specific escaping is not a universal XSS sanitizer.",
+      "validation": "Assistant inspection of historical source patch; no build or runtime reproduction. CSV CWE label retained, not independently reclassified.",
+      "reviewer": "Codex source inspection, not independent human review",
+      "review_date": "2026-10-04"
+    },
+    {
+      "id": "django/django@b6b3cb9899214a23ebb0f4ebf0e0b300b0ee524f:CVE-2015-2316",
+      "cwe": "CWE-606",
+      "files": [
+        "django/utils/html.py"
+      ],
+      "mechanism": "Repeated stripping can increase input length on affected historical Python HTMLParser versions.",
+      "transformation": "Stop iteration unless the new string is strictly shorter. Preserve the original value on no progress. strip_tags output is not guaranteed HTML-safe.",
+      "validation": "Assistant inspection of historical source patch; no build or runtime reproduction. CSV CWE label retained, not independently reclassified.",
+      "reviewer": "Codex source inspection, not independent human review",
+      "review_date": "2026-10-04"
+    },
+    {
+      "id": "torvalds/linux@05b252cccb2e5c3f56119d25de684b4f810ba40a:CVE-2023-2008",
+      "cwe": "CWE-129",
+      "files": [
+        "drivers/dma-buf/udmabuf.c"
+      ],
+      "mechanism": "A fault page offset indexes the backing pages array without checking pagecount.",
+      "transformation": "Check the unsigned page offset against pagecount before indexing; return VM_FAULT_SIGBUS for an invalid offset.",
+      "validation": "Assistant inspection of historical source patch; no build or runtime reproduction. CSV CWE label retained, not independently reclassified.",
+      "reviewer": "Codex source inspection, not independent human review",
+      "review_date": "2026-10-04"
+    },
+    {
+      "id": "torvalds/linux@9538cbaab6e8b8046039b4b2eb6c9d614dc782bd:CVE-2013-2852",
+      "cwe": "CWE-134",
+      "files": [
+        "drivers/net/wireless/b43/main.c"
+      ],
+      "mechanism": "A user-influenced firmware error string is passed as the b43err format argument.",
+      "transformation": "Use a constant %s format and pass errmsg as data, preserving error reporting without interpreting percent directives.",
+      "validation": "Assistant inspection of historical source patch; no build or runtime reproduction. CSV CWE label retained, not independently reclassified.",
+      "reviewer": "Codex source inspection, not independent human review",
+      "review_date": "2026-10-04"
+    }
+  ],
+  "vcc_conflicts": [
+    {
+      "cve": "CVE-2018-12972",
+      "vcc": "6aaf5656d0128e217d3efda1d80685d7ea837bdb",
+      "finding": "ICSE2022 verified Java artifact marks is_true_inducing False; CSV retains a Zenodo candidate assertion",
+      "source": "https://figshare.com/articles/software/ICSE2022_Replication_Package/16557069"
+    },
+    {
+      "cve": "CVE-2018-12972",
+      "vcc": "3a268f7cb6e7f5a5c91be00a9b76e85b58df8631",
+      "finding": "ICSE2022 verified Java artifact marks is_true_inducing False; CSV retains a Zenodo candidate assertion",
+      "source": "https://figshare.com/articles/software/ICSE2022_Replication_Package/16557069"
+    },
+    {
+      "cve": "CVE-2016-6652",
+      "vcc": "a9cfe73511342c7f7d95a591bbf5ca1e7a8c1e86",
+      "finding": "Positive source annotation conflicts with is_true_inducing False in the ICSE2022 verified artifact",
+      "source": "https://figshare.com/articles/software/ICSE2022_Replication_Package/16557069"
+    }
+  ]
+}

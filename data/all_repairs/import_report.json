@@ -1,0 +1,13 @@
+{
+  "csv": "/home/chris/Downloads/Real World Java VCC Datasets - VCCs.csv",
+  "csv_sha256": "3bec4822217c9ecc4920a0842ec186935fbdfb017edf88cf2b6d9f76e779f23d",
+  "detailed_records": 70,
+  "left_records_matched": 31,
+  "unmatched_left_records": [],
+  "java_records": 35,
+  "requested_fixes": 55,
+  "downloaded_candidates": 55,
+  "reviewed_repairs": 9,
+  "errors": [],
+  "missing_reviews": []
+}

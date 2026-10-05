@@ -1,6 +1,9 @@
 # ignore NFS “.nfs<…>” temporary files
 .nfs*
 credentials.json
+data/java_repairs/cache/
+data/all_repairs/cache/
+data/runs/
 token.json
 __pycache__/
 *.py[cod]

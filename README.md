@@ -1,5 +1,9 @@
 # RAG-VCC (Notre Dame's Summer 2025 Computing Skills Accelerator Program)
 
+### Repair prototype
+
+The fork adds a repository-level repair workflow using Codex CLI or Claude Code. See [REPAIR.md](REPAIR.md) for the local demo, scenario configuration, retrieval format and validation checks. The original generation workflow remains available below.
+
 Vulnerability-detecting machine learning models are becoming more important in cybersecurity because they can help prevent vulnerable software from being published. However, in order to train these models, large amounts of data are necessary. Existing datasets are currently not realistic or diverse enough to address this challenge. RAG-VCC tries to address that issue by using retrieval-augmented generation (RAG) with a large language model to inject vulnerable code into non-vulnerable code snippets. Now with both snippets, we create Vulnerability-Contributing Commits (VCC) that are both realistic and diverse, fit to train vulnerability-detecting models.  
 
 ### GitHub-scrapers

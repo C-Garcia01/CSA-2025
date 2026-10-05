@@ -1,0 +1,1314 @@
+[
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2007-0404",
+    "vcc": "5cf8f684237ab5addaf3549b2347c3adf107c0a7",
+    "cwe": "CWE-78",
+    "source_file": "django/bin/compile-messages.py",
+    "fixes": [
+      "518d406e53a7417385a1a2e10bb5110b67d28fac",
+      " a132d411c6986418ee6c0edc331080aa792fee6e"
+    ],
+    "label_status": "Curated assertion",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2007-0404.yml",
+    "notes": "This was the commit where the file and function that created the script was introduced to the system. From the very onset, no validation of input was done",
+    "detail_row": 2,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "x-stream/xstream",
+    "cve": "CVE-2013-7285",
+    "vcc": "572c4be384d0385d08dbe43a9752c4ac653deac2",
+    "cwe": "CWE-78",
+    "source_file": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+    "fixes": [
+      "6344867dce6767af7d0fe34fb393271a6456672d"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2013-7285",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 3,
+    "left_rows": [
+      3
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "x-stream/xstream",
+    "cve": "CVE-2013-7285",
+    "vcc": "c7449c468cc1d8039490ac895c5e9387bccac4fb",
+    "cwe": "CWE-78",
+    "source_file": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+    "fixes": [
+      "6344867dce6767af7d0fe34fb393271a6456672d"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2013-7285",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 4,
+    "left_rows": [
+      2
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "opentsdb/opentsdb",
+    "cve": "CVE-2018-12972",
+    "vcc": "35717b127ef9cee78918bbdf04558c9564c9555d",
+    "cwe": "CWE-78",
+    "source_file": "src/query/expression/ExpressionIterator.java",
+    "fixes": [
+      "3944a8bf348194e3ff639f08c482473ac6f11713",
+      " a6a9ec4bc8a526951bc25bb19a145782bafaa8b0"
+    ],
+    "label_status": "External exact-SHA enrichment; DeepCVA native CVE/repo unavailable | manual line annotation; verified true inducing annotation",
+    "dataset": "DeepCVA | ICSE2022 V-SZZ",
+    "source_record": "DeepCVA: cvss_map.csv line 803; exact-SHA joins: ICSE2022 manual; ICSE2022 verified | ICSE2022 V-SZZ: data/label.json and data/verified_cve_with_versions_Java.json :: CVE-2018-12972",
+    "notes": "External exact-SHA enrichment; DeepCVA native CVE/repo unavailable; Exact 40-character introducing SHA equality; no fix-key or substring joins.; External CVE association does not establish the original DeepCVA CVE association.; CWE selection: NVD API; all alternative assertions remain in evidence.",
+    "detail_row": 5,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "opentsdb/opentsdb",
+    "cve": "CVE-2018-12972",
+    "vcc": "3a268f7cb6e7f5a5c91be00a9b76e85b58df8631",
+    "cwe": "CWE-78",
+    "source_file": "src/query/expression/ExpressionDataPoint.java",
+    "fixes": [
+      "a6a9ec4bc8a526951bc25bb19a145782bafaa8b0"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2018-12972",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 6,
+    "left_rows": [
+      13
+    ],
+    "known_conflicts": [
+      {
+        "cve": "CVE-2018-12972",
+        "vcc": "3a268f7cb6e7f5a5c91be00a9b76e85b58df8631",
+        "finding": "ICSE2022 verified Java artifact marks is_true_inducing False; CSV retains a Zenodo candidate assertion",
+        "source": "https://figshare.com/articles/software/ICSE2022_Replication_Package/16557069"
+      }
+    ]
+  },
+  {
+    "repository_id": "opentsdb/opentsdb",
+    "cve": "CVE-2018-12972",
+    "vcc": "6aaf5656d0128e217d3efda1d80685d7ea837bdb",
+    "cwe": "CWE-78",
+    "source_file": "src/query/expression/ExpressionIterator.java",
+    "fixes": [
+      "a6a9ec4bc8a526951bc25bb19a145782bafaa8b0"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2018-12972",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 7,
+    "left_rows": [
+      12
+    ],
+    "known_conflicts": [
+      {
+        "cve": "CVE-2018-12972",
+        "vcc": "6aaf5656d0128e217d3efda1d80685d7ea837bdb",
+        "finding": "ICSE2022 verified Java artifact marks is_true_inducing False; CSV retains a Zenodo candidate assertion",
+        "source": "https://figshare.com/articles/software/ICSE2022_Replication_Package/16557069"
+      }
+    ]
+  },
+  {
+    "repository_id": "apache/tomcat",
+    "cve": "CVE-2019-0232",
+    "vcc": "34601668ef04ac05695a8b145daf5444194948b7",
+    "cwe": "CWE-78",
+    "source_file": "java/org/apache/catalina/servlets/CGIServlet.java",
+    "fixes": [
+      "5bc4e6d7b1c22dc1bf99f475b7e70594ebdd83b9"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2019-0232",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits. | Vulnerability History Project reports no VCC for this CVE; its CVE-level record is retained in Related CVE evidence and is not support for this VCC.",
+    "detail_row": 8,
+    "left_rows": [
+      17
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/tomcat",
+    "cve": "CVE-2019-0232",
+    "vcc": "a84fabcbc6fee8a69253ad92a304b4718e96a7c9",
+    "cwe": "CWE-78",
+    "source_file": "java/org/apache/catalina/servlets/CGIServlet.java",
+    "fixes": [
+      "7f0221",
+      " 5bc4e6d7b1c22dc1bf99f475b7e70594ebdd83b9"
+    ],
+    "label_status": "Tool-assisted manual curation | Improved SZZ automated candidate | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable",
+    "dataset": "VCC-Eval | Zenodo 5785254 | DeepCVA",
+    "source_record": "VCC-Eval: JSON index 33 | Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2019-0232 | DeepCVA: cvss_map.csv line 24; exact-SHA joins: VCC-Eval; Zenodo",
+    "notes": "Source-labeled introducing lines: {\"java/org/apache/catalina/servlets/CGIServlet.java\": \"811-820\"} | Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits. | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable; Exact 40-character introducing SHA equality; no fix-key or substring joins.; External CVE association does not establish the original DeepCVA CVE association.; CWE selection: NVD API; all alternative assertions remain in evidence. | Vulnerability History Project reports no VCC for this CVE; its CVE-level record is retained in Related CVE evidence and is not support for this VCC.",
+    "detail_row": 9,
+    "left_rows": [
+      16
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "opennetworkinglab/onos",
+    "cve": "CVE-2019-1010245",
+    "vcc": "62bac080a303075792a329a23aebd139440c6a80",
+    "cwe": "CWE-78",
+    "source_file": "apps/yang/web/src/main/java/org/onosproject/yang/web/YangWebResource.java",
+    "fixes": [
+      "c6455baca3ad15813ffb4f2a78f56b897c9ee5b6"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2019-1010245",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 10,
+    "left_rows": [
+      18
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "sonatype/nexus-public",
+    "cve": "CVE-2019-5475",
+    "vcc": "1cd218a0dd21f880e5c6cfb3f9053b56bc6ecf19",
+    "cwe": "CWE-78",
+    "source_file": "components/nexus-core/src/main/java/org/sonatype/nexus/proxy/ResourceStoreRequest.java",
+    "fixes": [
+      "7b9939e71693422d3e09adc3744fa2e9b3a62a63"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2019-5475",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 11,
+    "left_rows": [
+      24
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "sonatype/nexus-public",
+    "cve": "CVE-2019-5475",
+    "vcc": "477164f49c386e25a86c3866e4ac3a58c422b562",
+    "cwe": "CWE-78",
+    "source_file": "components/base-configuration/src/main/java/org/sonatype/configuration/Configuration.java",
+    "fixes": [
+      "7b9939e71693422d3e09adc3744fa2e9b3a62a63"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2019-5475",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 12,
+    "left_rows": [
+      23
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/kylin",
+    "cve": "CVE-2020-1956",
+    "vcc": "91db31cc38786570160ff07625ad853b15515d67",
+    "cwe": "CWE-78",
+    "source_file": "assembly/src/test/java/org/apache/kylin/job/DeployUtil.java",
+    "fixes": [
+      "9cc3793ab2f2f0053c467a9b3f38cb7791cd436a"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2020-1956",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 13,
+    "left_rows": [
+      30
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/kylin",
+    "cve": "CVE-2020-1956",
+    "vcc": "c686b8436369df1fa951a42f179caa72984e1597",
+    "cwe": "CWE-78",
+    "source_file": "core-common/src/main/java/org/apache/kylin/common/KylinConfigBase.java",
+    "fixes": [
+      "9cc3793ab2f2f0053c467a9b3f38cb7791cd436a"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2020-1956",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 14,
+    "left_rows": [
+      29
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/httpd",
+    "cve": "CVE-2005-3352",
+    "vcc": "",
+    "cwe": "CWE-80",
+    "source_file": "",
+    "fixes": [
+      "245c5818aef62eac2f7a6d21941111af738f552c",
+      " 90521799bdb923df031e975021b7ce1d093fc4eb",
+      " a19987ca7f151b80c25e1fd6c24e938ca22987f4"
+    ],
+    "label_status": "Missing VCC",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/httpd/CVE-2005-3352.yml",
+    "notes": "Unable to find commit ID. Author called it \"Patch for apache-1.3 tree (ack fielding, jorton)/apache-2.0 tree (ack fielding, jorton).\" Here is the link -  https://bz.apache.org/bugzilla/show_bug.cgi?id=37874 The patch was as follows, mod_imap escapes untrusted referer header before outputting in HTML to avoid potential cross-site scripting. Change also made to ap_escape_html so we escape quotes. Reported by JPCERT.",
+    "detail_row": 15,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/httpd",
+    "cve": "CVE-2008-2939",
+    "vcc": "de3c03c970f18c6af0f311dff9556c1810c60ae8",
+    "cwe": "CWE-80",
+    "source_file": "modules/proxy/proxy_ftp.c",
+    "fixes": [
+      "447309689a7970bf8a7e00eb9d44a115acb8f6a3",
+      " 14e37944f999e75071e35681b64c4b7dd293ed9d"
+    ],
+    "label_status": "Curated assertion",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/httpd/CVE-2008-2939.yml",
+    "notes": "They were trying to port old hack from older apache version.\n\nFormerly 5a039b343a02a30d66fd1224f3fbdaa25f476eae before HTTPD rewrote Git history.",
+    "detail_row": 16,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/struts",
+    "cve": "CVE-2011-1772",
+    "vcc": "0c543aef318341ca9bd482e15f1637497b8a4dfd",
+    "cwe": "CWE-80",
+    "source_file": "xwork-core/src/main/java/com/opensymphony/xwork2/Action.java",
+    "fixes": [
+      "885ab3459e146ff830d1f7257f809f4a3dd4493a"
+    ],
+    "label_status": "Curated assertion",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/struts/CVE-2011-1772.yml",
+    "notes": "Moved XWork core under struts 2",
+    "detail_row": 17,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "chromium/chromium",
+    "cve": "CVE-2015-6790",
+    "vcc": "c1d2bdb0496d2264dd38614c9d6119818bc7b2f1",
+    "cwe": "CWE-80",
+    "source_file": "third_party/WebKit/WebCore/platform/text/StringBuilder.cpp",
+    "fixes": [
+      "b770d85e37b2d0e248f04cf20606a2f3871ef039"
+    ],
+    "label_status": "Curated assertion",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/chromium/CVE-2015-6790.yml",
+    "notes": "Vulnerability existed since the file was added to Chromium",
+    "detail_row": 18,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/ranger",
+    "cve": "CVE-2016-2174",
+    "vcc": "413fcb68f0368b35b2b0bc3c71bb8e71af6704ed",
+    "cwe": "CWE-89",
+    "source_file": "agents-audit/src/main/java/org/apache/ranger/audit/dao/BaseDao.java",
+    "fixes": [
+      "8618870d1b4acfae4114dd247a362cfa8493ab9e"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2016-2174",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 19,
+    "left_rows": [
+      4
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/ranger",
+    "cve": "CVE-2016-2174",
+    "vcc": "d650c91329c9bbc02f54977920b580320e293490",
+    "cwe": "CWE-89",
+    "source_file": "security-admin/src/main/java/org/apache/ranger/db/XXDataHistDao.java",
+    "fixes": [
+      "8618870d1b4acfae4114dd247a362cfa8493ab9e"
+    ],
+    "label_status": "Improved SZZ automated candidate | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable",
+    "dataset": "Zenodo 5785254 | DeepCVA",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2016-2174 | DeepCVA: cvss_map.csv line 736; exact-SHA joins: Zenodo",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits. | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable; Exact 40-character introducing SHA equality; no fix-key or substring joins.; External CVE association does not establish the original DeepCVA CVE association.; CWE selection: NVD API; all alternative assertions remain in evidence.",
+    "detail_row": 20,
+    "left_rows": [
+      5
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "spring-projects/spring-data-jpa",
+    "cve": "CVE-2016-6652",
+    "vcc": "1d6806b97901f1c59f851ccf41623208e865f7e3",
+    "cwe": "CWE-89",
+    "source_file": "src/main/java/org/springframework/data/jpa/domain/JpaSort.java",
+    "fixes": [
+      "b8e7fecccc7dc8edcabb4704656a7abe6352c08f"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2016-6652",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 21,
+    "left_rows": [
+      7
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "spring-projects/spring-data-jpa",
+    "cve": "CVE-2016-6652",
+    "vcc": "692b2382bf91a504c595b8549283b77a9a6e3f43",
+    "cwe": "CWE-89",
+    "source_file": "src/main/java/org/springframework/data/jpa/domain/JpaSort.java",
+    "fixes": [
+      "b8e7fecccc7dc8edcabb4704656a7abe6352c08f"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2016-6652",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 22,
+    "left_rows": [
+      6
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "spring-projects/spring-data-jpa",
+    "cve": "CVE-2016-6652",
+    "vcc": "a9cfe73511342c7f7d95a591bbf5ca1e7a8c1e86",
+    "cwe": "CWE-89",
+    "source_file": "src/main/java/org/springframework/data/jpa/repository/query/QueryUtils.java",
+    "fixes": [
+      "b8e7fecccc7dc8edcabb4704656a7abe6352c08f"
+    ],
+    "label_status": "DISPUTED across source annotations",
+    "dataset": "VCC-Eval | DeepCVA | ICSE2022 V-SZZ",
+    "source_record": "VCC-Eval: JSON index 76 | DeepCVA: cvss_map.csv line 371; exact-SHA joins: ICSE2022 manual; VCC-Eval | ICSE2022 V-SZZ: data/label.json and data/verified_cve_with_versions_Java.json :: CVE-2016-6652",
+    "notes": "Source-labeled introducing lines: {\"src/main/java/org/springframework/data/jpa/repository/query/QueryUtils.java\": \"169-181\"} Cross-dataset conflict: ICSE2022 verified artifact rejects this CVE/VCC pair; this dataset retains its positive assertion. | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable; Exact 40-character introducing SHA equality; no fix-key or substring joins.; External CVE association does not establish the original DeepCVA CVE association.; CWE selection: NVD API; all alternative assertions remain in evidence.; DISPUTED introducing annotation: an ICSE2022 verified record explicitly rejects this CVE/VCC pair; negative evidence retained. | DISPUTED: label.json identifies this VCC, but verified version artifact explicitly marks is_true_inducing=False. Do not count as consistently supported.",
+    "detail_row": 23,
+    "left_rows": [],
+    "known_conflicts": [
+      {
+        "cve": "CVE-2016-6652",
+        "vcc": "a9cfe73511342c7f7d95a591bbf5ca1e7a8c1e86",
+        "finding": "Positive source annotation conflicts with is_true_inducing False in the ICSE2022 verified artifact",
+        "source": "https://figshare.com/articles/software/ICSE2022_Replication_Package/16557069"
+      }
+    ]
+  },
+  {
+    "repository_id": "spring-projects/spring-data-jpa",
+    "cve": "CVE-2016-6652",
+    "vcc": "b291a5f5f9928491567b3cb1b4a78d105c54af82",
+    "cwe": "CWE-89",
+    "source_file": "src/main/java/org/springframework/data/jpa/repository/query/QueryUtils.java",
+    "fixes": [
+      "b8e7fecccc7dc8edcabb4704656a7abe6352c08f",
+      " edd497b9c93b4f364ffc78ca302a05938d499271"
+    ],
+    "label_status": "manual line annotation; verified true inducing annotation",
+    "dataset": "ICSE2022 V-SZZ",
+    "source_record": "ICSE2022 V-SZZ: data/label.json and data/verified_cve_with_versions_Java.json :: CVE-2016-6652",
+    "notes": "",
+    "detail_row": 24,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/hive",
+    "cve": "CVE-2018-1282",
+    "vcc": "23a52c17f1aeaadbdbc2d26f217d613a126e87f0",
+    "cwe": "CWE-89",
+    "source_file": "ant/src/org/apache/hadoop/hive/ant/QTestGenTask.java",
+    "fixes": [
+      "63df42966cf44ffdd20d3fcdcfb70738c0432aba"
+    ],
+    "label_status": "Improved SZZ automated candidate | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable",
+    "dataset": "Zenodo 5785254 | DeepCVA",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2018-1282 | DeepCVA: cvss_map.csv line 422; exact-SHA joins: Zenodo",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits. | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable; Exact 40-character introducing SHA equality; no fix-key or substring joins.; External CVE association does not establish the original DeepCVA CVE association.; CWE selection: NVD API; all alternative assertions remain in evidence.",
+    "detail_row": 25,
+    "left_rows": [
+      10
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/hive",
+    "cve": "CVE-2018-1282",
+    "vcc": "416c0f3a89090489fc5e45345f8982c141cb8412",
+    "cwe": "CWE-89",
+    "source_file": "itests/hive-unit/src/test/java/org/apache/hive/jdbc/TestJdbcDriver2.java",
+    "fixes": [
+      "63df42966cf44ffdd20d3fcdcfb70738c0432aba"
+    ],
+    "label_status": "Improved SZZ automated candidate | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable",
+    "dataset": "Zenodo 5785254 | DeepCVA",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2018-1282 | DeepCVA: cvss_map.csv line 534; exact-SHA joins: Zenodo",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits. | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable; Exact 40-character introducing SHA equality; no fix-key or substring joins.; External CVE association does not establish the original DeepCVA CVE association.; CWE selection: NVD API; all alternative assertions remain in evidence.",
+    "detail_row": 26,
+    "left_rows": [
+      11
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "wuweiit/mushroom",
+    "cve": "CVE-2018-17796",
+    "vcc": "67c0a38c349e4cc0250e7ff7e323c7e925ae1d23",
+    "cwe": "CWE-89",
+    "source_file": "WebRoot/admin/js/IE7.js",
+    "fixes": [
+      "8b67e2d88ca8040577248491a5e6e9c806184522"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2018-17796",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 27,
+    "left_rows": [
+      15
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "wuweiit/mushroom",
+    "cve": "CVE-2018-17796",
+    "vcc": "866453896a76ea6d3ef954af55d09137478834e9",
+    "cwe": "CWE-89",
+    "source_file": "src/main/java/org/marker/mushroom/beans/Article.java",
+    "fixes": [
+      "8b67e2d88ca8040577248491a5e6e9c806184522"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2018-17796",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 28,
+    "left_rows": [
+      14
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "spring-projects/spring-data-jpa",
+    "cve": "CVE-2019-3797",
+    "vcc": "3590075a46663ff83cd4b1772d6ba720b91ba70c",
+    "cwe": "CWE-89",
+    "source_file": "src/main/java/org/springframework/data/jpa/provider/PersistenceProvider.java",
+    "fixes": [
+      "9b16fef6e9a1c8f4352cb979df8ef4a9336d6552"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2019-3797",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 29,
+    "left_rows": [
+      21
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "spring-projects/spring-data-jpa",
+    "cve": "CVE-2019-3797",
+    "vcc": "5c95016717468fd45f4131d60df5e5ff935154b2",
+    "cwe": "CWE-89",
+    "source_file": "src/main/java/org/springframework/data/jpa/repository/query/CriteriaQueryParameterBinder.java",
+    "fixes": [
+      "9b16fef6e9a1c8f4352cb979df8ef4a9336d6552"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2019-3797",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 30,
+    "left_rows": [
+      22
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/skywalking",
+    "cve": "CVE-2020-13921",
+    "vcc": "215eab74288328e13f2c0fecf222168632685ff9",
+    "cwe": "CWE-89",
+    "source_file": "oap-server/server-core/src/main/java/org/apache/skywalking/oap/server/core/CoreModule.java",
+    "fixes": [
+      "fb7912c6bdda06a233f4b3e18e71a87d3e4a8951"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2020-13921",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 31,
+    "left_rows": [
+      25
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/skywalking",
+    "cve": "CVE-2020-13921",
+    "vcc": "a9489b706739d9ca994997ac071013c9e4afd0ce",
+    "cwe": "CWE-89",
+    "source_file": "apm-protocol/apm-network/src/main/java/org/apache/skywalking/apm/network/trace/component/ComponentsDefine.java",
+    "fixes": [
+      "fb7912c6bdda06a233f4b3e18e71a87d3e4a8951"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2020-13921",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 32,
+    "left_rows": [
+      26
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/kylin",
+    "cve": "CVE-2020-1937",
+    "vcc": "75f6b0054e78c6abb5a1723161b04fbd9acac4a8",
+    "cwe": "CWE-89",
+    "source_file": "core-cube/src/main/java/org/apache/kylin/cube/cuboid/TreeCuboidScheduler.java",
+    "fixes": [
+      "1f9f44ceb818b46518176e81c6dea5a0d12750cf"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2020-1937",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 33,
+    "left_rows": [
+      28
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/kylin",
+    "cve": "CVE-2020-1937",
+    "vcc": "8cfe32cf4f61d218439e57e134ccc3413aa98f89",
+    "cwe": "CWE-89",
+    "source_file": "server-base/src/main/java/org/apache/kylin/rest/service/CubeService.java",
+    "fixes": [
+      "e373c64c96a54a7abfe4bccb82e8feb60db0474",
+      " 1f9f44ceb818b46518176e81c6dea5a0d12750cf"
+    ],
+    "label_status": "Tool-assisted manual curation | Improved SZZ automated candidate",
+    "dataset": "VCC-Eval | Zenodo 5785254",
+    "source_record": "VCC-Eval: JSON index 47 | Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2020-1937",
+    "notes": "Source-labeled introducing lines: {\"server-base/src/main/java/org/apache/kylin/rest/service/CubeService.java\": \"930-933\"} | Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 34,
+    "left_rows": [
+      27
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2020-7471",
+    "vcc": "0a26f3c3388137c336fb1417ba870fde12c0fbcc",
+    "cwe": "CWE-89",
+    "source_file": "django/contrib/postgres/aggregates/general.py",
+    "fixes": [
+      "505826b469b16ab36693360da9e11fd13213421b",
+      " c67a368c16e4680b324b4f385398d638db4d8147",
+      " 001b0634cd309e372edb6d7d95d083d02b8e37bd",
+      " eb31d845323618d688ad429479c6dda973056136"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2020-7471.yml",
+    "notes": "This VCC was discovered automatically via archeogit.",
+    "detail_row": 35,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2020-7471",
+    "vcc": "149061103829fb3ad74d050b4ae3cc815b2f451c",
+    "cwe": "CWE-89",
+    "source_file": "django/contrib/postgres/aggregates/general.py",
+    "fixes": [
+      "505826b469b16ab36693360da9e11fd13213421b",
+      " c67a368c16e4680b324b4f385398d638db4d8147",
+      " 001b0634cd309e372edb6d7d95d083d02b8e37bd",
+      " eb31d845323618d688ad429479c6dda973056136"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2020-7471.yml",
+    "notes": "This VCC was discovered automatically via archeogit.",
+    "detail_row": 36,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2020-7471",
+    "vcc": "bc05547cd8c1dd511c6b6a6c873a1bc63417b111",
+    "cwe": "CWE-89",
+    "source_file": "django/contrib/postgres/aggregates/general.py",
+    "fixes": [
+      "505826b469b16ab36693360da9e11fd13213421b",
+      " c67a368c16e4680b324b4f385398d638db4d8147",
+      " 001b0634cd309e372edb6d7d95d083d02b8e37bd",
+      " eb31d845323618d688ad429479c6dda973056136"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2020-7471.yml",
+    "notes": "This VCC was discovered automatically via archeogit.",
+    "detail_row": 37,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2020-7471",
+    "vcc": "df8412d2e5c95fe8c8238ebde8e0dbb68fe2ec1d",
+    "cwe": "CWE-89",
+    "source_file": "django/contrib/postgres/aggregates/general.py",
+    "fixes": [
+      "505826b469b16ab36693360da9e11fd13213421b",
+      " c67a368c16e4680b324b4f385398d638db4d8147",
+      " 001b0634cd309e372edb6d7d95d083d02b8e37bd",
+      " eb31d845323618d688ad429479c6dda973056136"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2020-7471.yml",
+    "notes": "This VCC was discovered automatically via archeogit.",
+    "detail_row": 38,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2020-7471",
+    "vcc": "e4cf8c8420634d6f2dc8ce873246256ce635972d",
+    "cwe": "CWE-89",
+    "source_file": "django/contrib/postgres/aggregates/__init__.py",
+    "fixes": [
+      "505826b469b16ab36693360da9e11fd13213421b",
+      " c67a368c16e4680b324b4f385398d638db4d8147",
+      " 001b0634cd309e372edb6d7d95d083d02b8e37bd",
+      " eb31d845323618d688ad429479c6dda973056136"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2020-7471.yml",
+    "notes": "This VCC was discovered automatically via archeogit.",
+    "detail_row": 39,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/skywalking",
+    "cve": "CVE-2020-9483",
+    "vcc": "6fe2041b470113e626cb3f41e3789261d31f2548",
+    "cwe": "CWE-89",
+    "source_file": "apm-application-toolkit/apm-toolkit-opentracing/src/main/java/org/apache/skywalking/apm/toolkit/opentracing/SkywalkingSpanBuilder.java",
+    "fixes": [
+      "4ce2e9e87398efcee4b646af1143f4dc2ae10dc7"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2020-9483",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 40,
+    "left_rows": [
+      32
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "apache/skywalking",
+    "cve": "CVE-2020-9483",
+    "vcc": "9149de2a6e686ff5442ec5bfd2d00ea4912fb911",
+    "cwe": "CWE-89",
+    "source_file": "oap-server/exporter/src/main/java/org/apache/skywalking/oap/server/exporter/provider/grpc/GRPCExporter.java",
+    "fixes": [
+      "4ce2e9e87398efcee4b646af1143f4dc2ae10dc7"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2020-9483",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 41,
+    "left_rows": [
+      31
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "undertow-io/undertow",
+    "cve": "CVE-2018-1067",
+    "vcc": "5d017ce12d075679822104e8a8a3b1ad98abad86",
+    "cwe": "CWE-113",
+    "source_file": "core/src/main/java/io/undertow/UndertowMessages.java",
+    "fixes": [
+      "85d4478e598105fe94ac152d3e11e388374e8b86"
+    ],
+    "label_status": "Improved SZZ automated candidate | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable",
+    "dataset": "Zenodo 5785254 | DeepCVA",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2018-1067 | DeepCVA: cvss_map.csv line 921; exact-SHA joins: Zenodo",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits. | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable; Exact 40-character introducing SHA equality; no fix-key or substring joins.; External CVE association does not establish the original DeepCVA CVE association.; CWE selection: NVD API; all alternative assertions remain in evidence.",
+    "detail_row": 42,
+    "left_rows": [
+      8
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "undertow-io/undertow",
+    "cve": "CVE-2018-1067",
+    "vcc": "bd30c3e8cf3a9d0d4ceed46679fb5fd5a7b7e4c1",
+    "cwe": "CWE-113",
+    "source_file": "core/src/main/java/io/undertow/server/HttpResponseConduit.java",
+    "fixes": [
+      "85d4478e598105fe94ac152d3e11e388374e8b86"
+    ],
+    "label_status": "Improved SZZ automated candidate",
+    "dataset": "Zenodo 5785254",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2018-1067",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits.",
+    "detail_row": 43,
+    "left_rows": [
+      9
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "line/armeria",
+    "cve": "CVE-2019-16771",
+    "vcc": "8a003bf4984c233b33e0e8b686c68deb2164c0b3",
+    "cwe": "CWE-113",
+    "source_file": "core/src/main/java/com/linecorp/armeria/client/AbstractClientOptionsBuilder.java",
+    "fixes": [
+      "b597f7a865a527a84ee3d6937075cfbb4470ed20"
+    ],
+    "label_status": "Improved SZZ automated candidate | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable",
+    "dataset": "Zenodo 5785254 | DeepCVA",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2019-16771 | DeepCVA: cvss_map.csv line 1187; exact-SHA joins: VCC-Eval; Zenodo",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits. | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable; Exact 40-character introducing SHA equality; no fix-key or substring joins.; External CVE association does not establish the original DeepCVA CVE association.; CWE selection: NVD API; all alternative assertions remain in evidence.; Multiple numeric CWE assertions retained without reclassification or resolving source disagreements.",
+    "detail_row": 44,
+    "left_rows": [
+      20
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "line/armeria",
+    "cve": "CVE-2019-16771",
+    "vcc": "92919ff6b4883e5500124b8b426f44ea1d5457bc",
+    "cwe": "CWE-113",
+    "source_file": "benchmarks/src/jmh/java/com/linecorp/armeria/common/HttpHeadersBenchmark.java",
+    "fixes": [
+      "b597f7a865a527a84ee3d6937075cfbb4470ed20"
+    ],
+    "label_status": "Improved SZZ automated candidate | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable",
+    "dataset": "Zenodo 5785254 | DeepCVA",
+    "source_record": "Zenodo 5785254: vuln_introducing/dataset/dataset.yaml :: CVE-2019-16771 | DeepCVA: cvss_map.csv line 1206; exact-SHA joins: Zenodo",
+    "notes": "Final filtered dataset; dictionary keys are fixing commits, list values are introducing commits. | External exact-SHA enrichment; DeepCVA native CVE/repo unavailable; Exact 40-character introducing SHA equality; no fix-key or substring joins.; External CVE association does not establish the original DeepCVA CVE association.; CWE selection: NVD API; all alternative assertions remain in evidence.; Multiple numeric CWE assertions retained without reclassification or resolving source disagreements.",
+    "detail_row": 45,
+    "left_rows": [
+      19
+    ],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "chromium/chromium",
+    "cve": "CVE-2013-0841",
+    "vcc": "55126134af52fe0f6a426f0f7ccfeeb8cf2c9f28",
+    "cwe": "CWE-129",
+    "source_file": "chrome/browser/blocked_plugin_manager.cc",
+    "fixes": [
+      "85f2fcc7b577362dd1def5895d60ea70d6e6b8d0"
+    ],
+    "label_status": "Curated assertion",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/chromium/CVE-2013-0841.yml",
+    "notes": "This VCC created the function where the array and index was used, and \nalso did not check to see if it was within bounds.",
+    "detail_row": 46,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "chromium/chromium",
+    "cve": "CVE-2013-0841",
+    "vcc": "9fb83e856fc12168151094df31e57177e4844417",
+    "cwe": "CWE-129",
+    "source_file": "chrome/browser/browsing_data_appcache_helper.cc",
+    "fixes": [
+      "85f2fcc7b577362dd1def5895d60ea70d6e6b8d0"
+    ],
+    "label_status": "Curated assertion",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/chromium/CVE-2013-0841.yml",
+    "notes": "This VCC used the index in the array without checking to see if it was\nwithin bounds.",
+    "detail_row": 47,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "ffmpeg/ffmpeg",
+    "cve": "CVE-2015-8218",
+    "vcc": "38025e6898ef7caa076ff20daf4fc9f27269e4df",
+    "cwe": "CWE-129",
+    "source_file": "libavcodec/faxcompr.c",
+    "fixes": [
+      "d4a731b84a08f0f3839eaaaf82e97d8d9c67da46",
+      " a7bbb7fb884a02a7b380ef7afa787fca756b9d82"
+    ],
+    "label_status": "Curated assertion",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/ffmpeg/CVE-2015-8218.yml",
+    "notes": "First introduction of bug",
+    "detail_row": 48,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "ffmpeg/ffmpeg",
+    "cve": "CVE-2015-8218",
+    "vcc": "a4f9bb228bb34f0cfa4b55b207c19604b1e36818",
+    "cwe": "CWE-129",
+    "source_file": "libavcodec/faxcompr.c",
+    "fixes": [
+      "d4a731b84a08f0f3839eaaaf82e97d8d9c67da46",
+      " a7bbb7fb884a02a7b380ef7afa787fca756b9d82"
+    ],
+    "label_status": "Curated assertion",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/ffmpeg/CVE-2015-8218.yml",
+    "notes": "Bug pasted a second time",
+    "detail_row": 49,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "ffmpeg/ffmpeg",
+    "cve": "CVE-2015-8218",
+    "vcc": "b2e95e012c3c857eb1f8fddc7a41c0c4f0581f30",
+    "cwe": "CWE-129",
+    "source_file": "libavcodec/faxcompr.c",
+    "fixes": [
+      "d4a731b84a08f0f3839eaaaf82e97d8d9c67da46",
+      " a7bbb7fb884a02a7b380ef7afa787fca756b9d82"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/ffmpeg/CVE-2015-8218.yml",
+    "notes": "identified by archeogit, refactoring (DRY)",
+    "detail_row": 50,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "ffmpeg/ffmpeg",
+    "cve": "CVE-2015-8662",
+    "vcc": "c81a70638116eaf4251075475e5cbb600a33c5ec",
+    "cwe": "CWE-129",
+    "source_file": "libavcodec/allcodecs.c",
+    "fixes": [
+      "75422280fbcdfbe9dc56bde5525b4d8b280f1bc5"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/ffmpeg/CVE-2015-8662.yml",
+    "notes": "Identified by archeogit,",
+    "detail_row": 51,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "torvalds/linux",
+    "cve": "CVE-2017-10663",
+    "vcc": "1e968fdfe69e4060f05fa04059ecad93a0284e32",
+    "cwe": "CWE-129",
+    "source_file": "fs/f2fs/checkpoint.c",
+    "fixes": [
+      "15d3042a937c13f5d9244241c7a9c8416ff6e82a"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/kernel/CVE-2017-10663.yml",
+    "notes": "Discovered automatically by archeogit.",
+    "detail_row": 52,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "torvalds/linux",
+    "cve": "CVE-2017-10663",
+    "vcc": "2040fce83fe17763b07c97c1f691da2bb85e4135",
+    "cwe": "CWE-129",
+    "source_file": "fs/f2fs/segment.h",
+    "fixes": [
+      "15d3042a937c13f5d9244241c7a9c8416ff6e82a"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/kernel/CVE-2017-10663.yml",
+    "notes": "Discovered automatically by archeogit.",
+    "detail_row": 53,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "torvalds/linux",
+    "cve": "CVE-2017-10663",
+    "vcc": "577e349514452fa3fcd99fd06e587b02d3d1cf28",
+    "cwe": "CWE-129",
+    "source_file": "fs/f2fs/checkpoint.c",
+    "fixes": [
+      "15d3042a937c13f5d9244241c7a9c8416ff6e82a"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/kernel/CVE-2017-10663.yml",
+    "notes": "Discovered automatically by archeogit.",
+    "detail_row": 54,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "torvalds/linux",
+    "cve": "CVE-2017-10663",
+    "vcc": "aff063e266cbf4754021d8e5d16ee418560906fd",
+    "cwe": "CWE-129",
+    "source_file": "fs/f2fs/super.c",
+    "fixes": [
+      "15d3042a937c13f5d9244241c7a9c8416ff6e82a"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/kernel/CVE-2017-10663.yml",
+    "notes": "Discovered automatically by archeogit.",
+    "detail_row": 55,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "torvalds/linux",
+    "cve": "CVE-2017-8797",
+    "vcc": "8a4c3926889e7bf226e9f0254e7eface1f85f312",
+    "cwe": "CWE-129",
+    "source_file": "fs/nfsd/export.c",
+    "fixes": [
+      "f961e3f2acae94b727380c0b74e2d3954d0edf79",
+      " b550a32e60a4941994b437a8d662432a486235a5"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/kernel/CVE-2017-8797.yml",
+    "notes": "Discovered automatically by archeogit.",
+    "detail_row": 56,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "torvalds/linux",
+    "cve": "CVE-2017-8797",
+    "vcc": "9cf514ccfacb301f3b1b4509a8ce25dffad55880",
+    "cwe": "CWE-129",
+    "source_file": "fs/nfsd/export.c",
+    "fixes": [
+      "f961e3f2acae94b727380c0b74e2d3954d0edf79",
+      " b550a32e60a4941994b437a8d662432a486235a5"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/kernel/CVE-2017-8797.yml",
+    "notes": "Discovered automatically by archeogit.",
+    "detail_row": 57,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "ffmpeg/ffmpeg",
+    "cve": "CVE-2018-13302",
+    "vcc": "5e6fd132ff5611b8af2d3c7506f0328858fc3de1",
+    "cwe": "CWE-129",
+    "source_file": "libavformat/isom.c",
+    "fixes": [
+      "ed22dc22216f74c75ee7901f82649e1ff725ba50"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/ffmpeg/CVE-2018-13302.yml",
+    "notes": "Identified by archeogit,",
+    "detail_row": 58,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "torvalds/linux",
+    "cve": "CVE-2021-29646",
+    "vcc": "e1f32190cf7ddd55778b460e7d44af3f76529698",
+    "cwe": "CWE-129",
+    "source_file": "include/uapi/linux/tipc_netlink.h",
+    "fixes": [
+      "0217ed2848e8538bcf9172d97ed2eeb4a26041bb"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/kernel/CVE-2021-29646.yml",
+    "notes": "Discovered automatically by archeogit.",
+    "detail_row": 59,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "torvalds/linux",
+    "cve": "CVE-2021-38201",
+    "vcc": "8d86e373b0ef52d091ced9583ffbb33ad2771576",
+    "cwe": "CWE-129",
+    "source_file": "net/sunrpc/xdr.c",
+    "fixes": [
+      "6d1c0f3d28f98ea2736128ed3e46821496dc3a8c"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/kernel/CVE-2021-38201.yml",
+    "notes": "Discovered automatically by archeogit.",
+    "detail_row": 60,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "torvalds/linux",
+    "cve": "CVE-2022-27223",
+    "vcc": "1f7c51660034091dc134fcc534b7f1fa86a6e823",
+    "cwe": "CWE-129",
+    "source_file": "drivers/usb/gadget/udc/udc-xilinx.c",
+    "fixes": [
+      "7f14c7227f342d9932f9b918893c8814f86d2a0d"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/kernel/CVE-2022-27223.yml",
+    "notes": "Discovered automatically by archeogit.",
+    "detail_row": 61,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "torvalds/linux",
+    "cve": "CVE-2023-2008",
+    "vcc": "",
+    "cwe": "CWE-129",
+    "source_file": "",
+    "fixes": [
+      "05b252cccb2e5c3f56119d25de684b4f810ba40a"
+    ],
+    "label_status": "Missing VCC",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/kernel/CVE-2023-2008.yml",
+    "notes": "",
+    "detail_row": 62,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "torvalds/linux",
+    "cve": "CVE-2013-2851",
+    "vcc": "",
+    "cwe": "CWE-134",
+    "source_file": "",
+    "fixes": [
+      ""
+    ],
+    "label_status": "Missing VCC",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/kernel/CVE-2013-2851.yml",
+    "notes": "",
+    "detail_row": 63,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "torvalds/linux",
+    "cve": "CVE-2013-2852",
+    "vcc": "",
+    "cwe": "CWE-134",
+    "source_file": "",
+    "fixes": [
+      "9538cbaab6e8b8046039b4b2eb6c9d614dc782bd"
+    ],
+    "label_status": "Missing VCC",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/kernel/CVE-2013-2852.yml",
+    "notes": "",
+    "detail_row": 64,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2013-1443",
+    "vcc": "8dff194e9b22e05c4146798c7b00bbf48af80213",
+    "cwe": "CWE-606",
+    "source_file": "django/contrib/auth/forms.py",
+    "fixes": [
+      "aae5a96d5754ad34e48b7f673ef2411a3bbc1015",
+      " 5d74853e156105ea02a41f4731346dbe272c2412"
+    ],
+    "label_status": "Curated assertion",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2013-1443.yml",
+    "notes": "Removed unneeded max_length on passwords, it looks like the\ndeveloper meant to remove this check for password length.",
+    "detail_row": 65,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2015-2316",
+    "vcc": "bf1871d874a371ad0ae6c7e098e7665a468dca16",
+    "cwe": "CWE-606",
+    "source_file": "django/utils/html.py",
+    "fixes": [
+      "b6b3cb9899214a23ebb0f4ebf0e0b300b0ee524f",
+      " e63363f8e075fa8d66326ad6a1cc3391cc95cd97",
+      " 5447709a571cd5d95971f1d5d21d4a7edcf85bbd"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2015-2316.yml",
+    "notes": "This VCC was discovered automatically via archeogit.",
+    "detail_row": 66,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2015-2316",
+    "vcc": "d7504a3d7b8645bdb979bab7ded0e9a9b6dccd0e",
+    "cwe": "CWE-606",
+    "source_file": "django/utils/html.py",
+    "fixes": [
+      "b6b3cb9899214a23ebb0f4ebf0e0b300b0ee524f",
+      " e63363f8e075fa8d66326ad6a1cc3391cc95cd97",
+      " 5447709a571cd5d95971f1d5d21d4a7edcf85bbd"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2015-2316.yml",
+    "notes": "This VCC was discovered automatically via archeogit.",
+    "detail_row": 67,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2015-5145",
+    "vcc": "574dd5e0b0fbb877ae5827b1603d298edc9bb2a0",
+    "cwe": "CWE-606",
+    "source_file": "django/core/validators.py",
+    "fixes": [
+      "8f9a4d3a2bc42f14bb437defd30c7315adbff22c"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2015-5145.yml",
+    "notes": "This VCC was discovered automatically via archeogit. The changes that\nlead to the creation of this vulnerability was a fix to another bug in\norder to fix a different issue with the regular expressions.",
+    "detail_row": 68,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2019-14233",
+    "vcc": "1c83fc88d6928a5ab53bc3dde79dad3cc0bfcfdc",
+    "cwe": "CWE-606",
+    "source_file": "django/utils/html.py",
+    "fixes": [
+      "e34f3c0e9ee5fc9022428fe91640638bafd4cda7",
+      " 5ff8e791148bd451180124d76a55cb2b2b9556eb",
+      " 52479acce792ad80bb0f915f20b835f919993c72"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2019-14233.yml",
+    "notes": "This VCC was discovered automatically via archeogit.",
+    "detail_row": 69,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2019-14233",
+    "vcc": "ba53cd30d1427dbbd564b1791ef6348db93cf37f",
+    "cwe": "CWE-606",
+    "source_file": "tests/regressiontests/utils/checksums.py",
+    "fixes": [
+      "e34f3c0e9ee5fc9022428fe91640638bafd4cda7",
+      " 5ff8e791148bd451180124d76a55cb2b2b9556eb",
+      " 52479acce792ad80bb0f915f20b835f919993c72"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2019-14233.yml",
+    "notes": "This VCC was discovered automatically via archeogit.",
+    "detail_row": 70,
+    "left_rows": [],
+    "known_conflicts": []
+  },
+  {
+    "repository_id": "django/django",
+    "cve": "CVE-2019-14233",
+    "vcc": "f8d52521ab74e538f35c8dcf75760b5a2532c3b5",
+    "cwe": "CWE-606",
+    "source_file": "tests/utils_tests/test_html.py",
+    "fixes": [
+      "e34f3c0e9ee5fc9022428fe91640638bafd4cda7",
+      " 5ff8e791148bd451180124d76a55cb2b2b9556eb",
+      " 52479acce792ad80bb0f915f20b835f919993c72"
+    ],
+    "label_status": "Automated candidate",
+    "dataset": "Vulnerability History Project",
+    "source_record": "Vulnerability History Project: https://github.com/VulnerabilityHistoryProject/vulnerabilities/blob/e2e26e9752f48c74445ee914f9b937effce2fc7c/cves/django/CVE-2019-14233.yml",
+    "notes": "This VCC was discovered automatically via archeogit.",
+    "detail_row": 71,
+    "left_rows": [],
+    "known_conflicts": []
+  }
+]
