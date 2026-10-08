@@ -132,6 +132,15 @@ command that builds one, and may carry its own proposal and corpus. A setup
 failure is recorded as an error rather than stopping the sweep. This is how you
 scale the dataset across many real VCCs.
 
+### Juliet Java 1.3
+
+[The Juliet workflow](examples/juliet/README.md) imports the ten tracked CWE
+categories into a separate dataset repository, compiles the original sources,
+and runs ten protected, representative repair scenarios. It preserves supplied
+bad/good references separately from generated, runtime-validated repairs, with
+before/after snapshots and synthetic commit histories. Saved proposals can be
+replayed without a model, or replaced by fresh Codex/Claude generation.
+
 ### Draft a scenario from a fixing commit
 
 `src/repair_scenario.py` turns a fixing commit into a draft scenario: it mirrors
