@@ -148,17 +148,20 @@ class RepairTests(unittest.TestCase):
 
     def test_claude_structured_result(self):
         proposal = json.loads(self.proposal.read_text())
-        response = {"structured_output": proposal, "is_error": False}
+        response = {"result": json.dumps(proposal), "is_error": False}
         result = {"timed_out": False, "returncode": 0, "output": json.dumps(response)}
         with patch("repair_agent.run_command", return_value=result) as runner:
             actual = RepairAgent("claude").generate("repair", self.root / "agent", 30)
         self.assertEqual(actual, proposal)
-        self.assertIn("--json-schema", runner.call_args.args[0])
+        self.assertNotIn("--json-schema", runner.call_args.args[0])
+        command = runner.call_args.args[0]
+        self.assertEqual(command[command.index("--model") + 1], "claude-opus-4-8")
 
     def test_codex_reads_final_json(self):
         proposal = json.loads(self.proposal.read_text())
 
         def fake_run(command, cwd, *args):
+            self.assertNotIn("--model", command)
             Path(command[command.index("-o") + 1]).write_text(json.dumps(proposal))
             return {"timed_out": False, "returncode": 0, "output": "event stream"}
 

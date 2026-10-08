@@ -22,7 +22,7 @@ python src/repair_main.py /tmp/vcc-repair-demo/scenario.json --output /tmp/vcc-c
 python src/repair_main.py /tmp/vcc-repair-demo/scenario.json --output /tmp/vcc-claude-run --provider claude
 ```
 
-Authenticate the selected CLI first. Add `--model MODEL` to select a specific model. Without it, the CLI chooses its configured default. Model calls may incur usage charges.
+The default provider invokes the installed `claude` (Claude Code) CLI. Run `claude auth login` to sign in with your Claude subscription; the pipeline uses that CLI login. Authenticate the selected CLI first. Add `--model MODEL` to select a specific model. Without it, Claude Code uses Opus 4.8 (`claude-opus-4-8`), the default provider and model. With `--provider codex`, Codex uses its configured default. Model calls may incur usage charges.
 
 ## Run the Java demonstration
 
@@ -152,7 +152,7 @@ Historical before/after snippets are changed hunks at the fixing commit's parent
 
 The CLI receives the context bundle and returns JSON edits with `path`, `old`, and `new`. Each old string must match exactly once. The runner validates every edit before applying any of them to a fresh checkout. Multiple files are supported; new files, deletions, symlinks and submodules are outside this prototype's scope.
 
-Claude runs with tools disabled. Codex runs in read-only mode from a separate directory and is instructed to return edits. Neither receives a writable target checkout through this workflow. This is not a confidentiality boundary: use separate execution environments for adversarial generation or truly hidden evaluation tests.
+Claude runs with tools disabled. Its JSON reply is validated locally, with up to two format-correction retries within one timeout budget; all attempts are logged. This avoids the Claude CLI `--json-schema` tool serialization path. Codex runs in read-only mode from a separate directory and is instructed to return edits. Neither receives a writable target checkout through this workflow. This is not a confidentiality boundary: use separate execution environments for adversarial generation or truly hidden evaluation tests.
 
 Baseline build and functional checks must pass, and the original security assertion must fail with the expected marker. The repaired checkout must then pass all three checks. Retries start from the original revision and receive only the previous failure reason.
 

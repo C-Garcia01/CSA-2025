@@ -4,6 +4,7 @@ import logging
 from datetime import datetime, timezone
 from pathlib import Path
 
+from repair_agent import DEFAULT_PROVIDER, resolve_model
 from repair_main import run_repair
 from repair_workspace import run_command
 
@@ -42,7 +43,8 @@ def _summarize(output, runs, provider, model):
     return summary
 
 
-def run_batch(scenarios, output, provider="codex", model=None, corpus=None, prepare_only=False):
+def run_batch(scenarios, output, provider=DEFAULT_PROVIDER, model=None, corpus=None, prepare_only=False):
+    model = resolve_model(provider, model)
     output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=False)
     runs = []
@@ -70,7 +72,8 @@ def build_scenario(case, work):
     return Path(lines[-1].strip()).resolve()
 
 
-def run_manifest(manifest, output, provider="codex", model=None, prepare_only=False):
+def run_manifest(manifest, output, provider=DEFAULT_PROVIDER, model=None, prepare_only=False):
+    model = resolve_model(provider, model)
     output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=False)
     cases = json.loads(Path(manifest).read_text(encoding="utf-8")).get("cases")
@@ -101,8 +104,8 @@ def main():
     parser.add_argument("scenarios", nargs="*", help="Scenario JSON files or directories of them")
     parser.add_argument("--manifest", help="JSON manifest of cases that each build and run a scenario")
     parser.add_argument("--output", required=True)
-    parser.add_argument("--provider", choices=["codex", "claude"], default="codex")
-    parser.add_argument("--model")
+    parser.add_argument("--provider", choices=["codex", "claude"], default=DEFAULT_PROVIDER)
+    parser.add_argument("--model", help="Model override (Claude default: claude-opus-4-8; Codex: CLI default)")
     parser.add_argument("--corpus")
     parser.add_argument("--prepare-only", action="store_true")
     args = parser.parse_args()

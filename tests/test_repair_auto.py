@@ -43,7 +43,8 @@ class AutoTests(unittest.TestCase):
         report, model = self.run_auto()
         self.assertEqual(report['status'], 'validated', report)
         self.assertEqual(model.call_count, 2)
-        self.assertEqual(report['provider'], 'codex')
+        self.assertEqual(report['provider'], 'claude')
+        self.assertEqual(report['model'], 'claude-opus-4-8')
         self.assertEqual(report['input_vcc'], self.revision)
         self.assertNotEqual(report['prepared_revision'], self.revision)
         candidate = self.root / 'run/repair/attempt_1/repository'
@@ -137,7 +138,7 @@ class AutoTests(unittest.TestCase):
              patch('builtins.print'):
             self.assertEqual(main(), 1)
         self.assertIn('auto-', run.call_args.args[1])
-        self.assertEqual(run.call_args.args[2], 'codex')
+        self.assertEqual(run.call_args.args[2], 'claude')
 
     def test_structured_provider_error_is_reported(self):
         error = {'returncode': 1, 'timed_out': False,

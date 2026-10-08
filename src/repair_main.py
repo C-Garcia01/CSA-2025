@@ -6,7 +6,7 @@ import platform
 from datetime import datetime, timezone
 from pathlib import Path
 
-from repair_agent import RepairAgent
+from repair_agent import DEFAULT_PROVIDER, RepairAgent, resolve_model
 from repair_context import RepairContext, make_prompt
 from repair_workspace import RepairWorkspace, git_command, read_config
 
@@ -15,7 +15,8 @@ def save_json(path, data):
     Path(path).write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
 
 
-def run_repair(config_path, output, provider="codex", model=None, prepare_only=False, proposal_path=None, corpus=None):
+def run_repair(config_path, output, provider=DEFAULT_PROVIDER, model=None, prepare_only=False, proposal_path=None, corpus=None):
+    model = resolve_model(provider, model)
     config = read_config(config_path)
     if corpus:
         config["corpus"] = str(Path(corpus).resolve())
@@ -120,8 +121,8 @@ def main():
     parser.add_argument("target", help="GitHub commit URL, SHA in the current repo, or scenario JSON")
     parser.add_argument("--output", help="Optional output directory; otherwise a unique data/runs directory is created")
     parser.add_argument("--repository", help="Repository for a bare SHA (defaults to current directory)")
-    parser.add_argument("--provider", choices=["codex", "claude"], default="codex")
-    parser.add_argument("--model")
+    parser.add_argument("--provider", choices=["codex", "claude"], default=DEFAULT_PROVIDER)
+    parser.add_argument("--model", help="Model override (Claude default: claude-opus-4-8; Codex: CLI default)")
     parser.add_argument("--prepare-only", action="store_true")
     parser.add_argument("--proposal", help="Validate a saved JSON proposal without calling an agent")
     parser.add_argument("--corpus", help="Use a reviewed JSONL repair corpus instead of the scenario default")

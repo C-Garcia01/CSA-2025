@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from uuid import uuid4
 from urllib.parse import urlparse
 
-from repair_agent import RepairAgent
+from repair_agent import DEFAULT_PROVIDER, RepairAgent, resolve_model
 from repair_workspace import RepairWorkspace, checked_path, git_command, run_command
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -213,7 +213,8 @@ def export_results(output, report, config=None):
     report['exported_files'] = len(rows)
 
 
-def run_auto(target, output=None, provider='codex', model=None, corpus=None, repository=None, prepare_only=False):
+def run_auto(target, output=None, provider=DEFAULT_PROVIDER, model=None, corpus=None, repository=None, prepare_only=False):
+    model = resolve_model(provider, model)
     from repair_main import run_repair
     output = Path(output or output_path()).resolve()
     output.mkdir(parents=True, exist_ok=False)
