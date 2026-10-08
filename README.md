@@ -10,8 +10,7 @@ The repository also contains the original pipeline, which introduces vulnerabili
 
 - [What the project does](#what-the-project-does)
 - [Setup](#setup)
-- [Run the Juliet experiment](#run-the-juliet-experiment)
-- [Replicate the pilot with a local dataset](#replicate-the-pilot-with-a-local-dataset)
+- [Run Juliet from a local ZIP](#run-juliet-from-a-local-zip)
 - [How the repair pipeline works](#how-the-repair-pipeline-works)
 - [Read the results](#read-the-results)
 - [Run with behavioral validation](#run-with-behavioral-validation)
@@ -64,221 +63,79 @@ mvn -version
 
 To use another model, pass `--model MODEL`. To use the Codex CLI instead, pass `--provider codex`; without a model override, it uses its configured default.
 
-## Run the Juliet experiment
+## Run Juliet from a local ZIP
 
-Use the original `2017-10-01-juliet-test-suite-for-java-v1-3.zip` archive. The adapter reads the ZIP directly, so it does not need to be unpacked first.
+Once Python, Git, and Claude Code are installed and Claude is signed in, **you can run the experiment with one command**. Run it from this repository's root and pass the path to your Juliet Java 1.3 ZIP. The program handles extraction, RAG retrieval, model calls, Git commits, and CSV export.
 
-### Start a 10-CWE pilot
-
-```bash
-python src/repair_juliet.py \
-  /path/to/2017-10-01-juliet-test-suite-for-java-v1-3.zip \
-  --per-cwe 1 \
-  --output data/runs/juliet-pilot
-```
-
-Replace the archive path with its location on your machine. Use a new output directory for a new run. If `--output` is omitted, the runner creates a unique `data/runs/juliet-.../` directory and prints its location.
-
-`--per-cwe 1` selects one testcase from each supported CWE present in the archive. The supported categories are **15, 78, 80, 81, 83, 89, 113, 129, 134, and 606**. With the full Java 1.3 archive, this produces 10 cases. The adapter favors basic `_01` flow variants and processes cases sequentially.
-
-The command uses Claude Opus 4.8 by default. Each case normally makes one repair call. Malformed JSON can trigger up to two additional calls within the same timeout budget. Direct mode allows 600 seconds per case's model-generation step.
-
-### Prepare inputs without calling a model
+### Small test: one case from each supported CWE
 
 ```bash
-python src/repair_juliet.py \
-  /path/to/2017-10-01-juliet-test-suite-for-java-v1-3.zip \
-  --per-cwe 1 \
-  --output data/runs/juliet-inputs \
-  --prepare-only
+python src/repair_juliet.py juliet.zip
 ```
 
-This creates the vulnerable input repositories, their commit hashes, and the CSV inventory. Cases remain `pending`, and repair hashes stay blank. It is useful for checking case selection before spending model usage.
-
-### Continue a run or retry failures
-
-Resume pending cases using the same output directory:
+Replace `juliet.zip` with your archive's filename or full path. For example:
 
 ```bash
-python src/repair_juliet.py \
-  /path/to/2017-10-01-juliet-test-suite-for-java-v1-3.zip \
-  --output data/runs/juliet-pilot \
-  --resume
+python src/repair_juliet.py "$HOME/Downloads/2017-10-01-juliet-test-suite-for-java-v1-3.zip"
 ```
 
-Add `--retry-failed` to retry cases marked `inconclusive`:
+This runs the same **10-CWE pilot** used for the published results. There is no need to unpack the ZIP, create scenarios, set environment variables, or run a separate preparation command.
+
+### Larger run: every case in the supported CWEs
 
 ```bash
-python src/repair_juliet.py \
-  /path/to/2017-10-01-juliet-test-suite-for-java-v1-3.zip \
-  --output data/runs/juliet-pilot \
-  --resume --retry-failed
+python src/repair_juliet.py juliet.zip --per-cwe 0
 ```
 
-Retries keep the same original input hashes, preserve earlier attempt folders, and leave completed successful cases alone. Resume requires the same archive contents, provider, model, corpus, and workflow. Repeat any custom options from the original command, including `--validate` when applicable.
+`--per-cwe 0` removes the one-case-per-CWE limit. It processes every case that the current adapter supports in the archive.
 
-### Run more cases
+**Scope:** the adapter currently supports CWE-15, 78, 80, 81, 83, 89, 113, 129, 134, and 606. Passing the full Juliet ZIP does not include other CWE categories or the C/C++ suite. Processing every Java CWE would require extending the adapter. The larger run makes thousands of model calls sequentially and is subject to your Claude account's usage limits.
 
-Increase `--per-cwe` to select more cases per category. `--per-cwe 0` selects every supported case in the archive. Start with the pilot: a full run can involve thousands of model calls.
+Both commands use **Claude Opus 4.8**, the existing Claude CLI login, and `data/splits/rag/repairs.jsonl` automatically. They generate repairs directly, without a separate test-harness call. Results are labeled `generated_unvalidated` because this mode does not run behavioral security tests.
 
-Useful options are:
+### Where to find the results
 
-| Option | Purpose |
+The program prints its output directory at startup, for example `data/runs/juliet-.../`. Open:
+
+- **`results.csv`** for every selected case, its status, and the original/repair commit hashes.
+- **`pairs.csv`** for cases that produced changed-file pairs.
+- **`summary.json`** for counts and failure reasons.
+
+The CSVs update as cases finish. Original commits, generated repairs, prompts, and logs are saved under the same run directory. A blank repair hash means that case has not produced a repair. See [Read the results](#read-the-results) for the full output reference.
+
+### Resume a stopped run
+
+Use the same ZIP and the actual output directory printed by the earlier command:
+
+```bash
+python src/repair_juliet.py juliet.zip --output data/runs/YOUR_RUN --resume
+```
+
+Replace `YOUR_RUN` with the existing folder name. The runner remembers which cases were selected, so a full run stays a full run when resumed. Add `--retry-failed` to retry unsuccessful cases as well:
+
+```bash
+python src/repair_juliet.py juliet.zip --output data/runs/YOUR_RUN --resume --retry-failed
+```
+
+Completed successful cases are kept, and earlier failure evidence is preserved. If you changed the provider, model, corpus, or validation mode for the first run, repeat those options when resuming.
+
+### Optional settings
+
+These are optional; the one-line commands above are enough for the normal experiment.
+
+| Option | When to use it |
 | --- | --- |
-| `--per-cwe N` | Select up to `N` cases per supported CWE; default `1`, or `0` for all. |
-| `--output PATH` | Choose the run directory. |
-| `--provider claude` | Use Claude Code; this is the default. |
-| `--model MODEL` | Override the model. |
-| `--corpus PATH` | Use a different reviewed JSONL repair corpus. |
-| `--prepare-only` | Create Juliet input commits and inventory without model calls. |
-| `--validate` | Use the longer harness-generation and behavioral-check workflow. |
-| `--resume` | Continue pending cases in an existing run. |
-| `--retry-failed` | With `--resume`, retry inconclusive cases while retaining prior evidence. |
+| `--per-cwe 5` | Run up to five cases per supported CWE. The default is one; `0` means all. |
+| `--output data/runs/my-run` | Pick a new output directory instead of using an automatically named one. |
+| `--prepare-only` | Import the input commits and CSV inventory without calling Claude. Resume later to generate repairs. |
+| `--validate` | Add the slower harness-generation and behavioral-check workflow. Requires the appropriate build tools; see [validation](#run-with-behavioral-validation). |
+| `--model MODEL` | Override Opus 4.8. |
+| `--provider codex` | Use the Codex CLI instead of Claude Code. |
+| `--corpus PATH` | Use a different reviewed repair-example corpus. |
 
-## Replicate the pilot with a local dataset
+Use the original Juliet Java ZIP, which contains `Java/src/testcases/`, `Java/src/testcasesupport/`, and `Java/lib/`. An extracted folder or a different dataset format needs an adapter; it cannot be passed to this command directly.
 
-For a local copy of Juliet Java 1.3, I would first prepare the inputs, check that the adapter selected the expected cases, and then run generation on those same inputs. This separates dataset/setup problems from model-response problems and keeps the original hashes stable while resuming the experiment.
-
-This reproduces the **direct repair experiment** used for the published pilot. It does not run behavioral security tests. The setup requirements are listed [above](#setup).
-
-### 1. Point the runner at the local archive
-
-From this repository's root, set these variables in a Bash-compatible shell:
-
-```bash
-export JULIET_ZIP="$HOME/Downloads/2017-10-01-juliet-test-suite-for-java-v1-3.zip"
-export JULIET_RUN="data/runs/juliet-replication"
-```
-
-Change the first path if the ZIP is somewhere else. `JULIET_RUN` must be a new directory for the preparation step. The archive can stay outside this repository.
-
-The adapter expects the original archive layout, including:
-
-```text
-Java/
-  src/
-    testcases/CWE.../
-    testcasesupport/
-  lib/
-```
-
-Check the archive before starting a model call:
-
-```bash
-python - <<'PY'
-import hashlib
-import os
-from pathlib import Path
-import zipfile
-
-archive = Path(os.environ["JULIET_ZIP"])
-print("Archive:", archive)
-print("SHA-256:", hashlib.sha256(archive.read_bytes()).hexdigest())
-with zipfile.ZipFile(archive) as dataset:
-    names = dataset.namelist()
-    assert any(n.startswith("Java/src/testcases/CWE") for n in names), "Missing testcase tree"
-    assert any(n.startswith("Java/src/testcasesupport/") for n in names), "Missing runtime support"
-print("Expected Juliet directories found.")
-PY
-```
-
-The archive used for the published pilot has SHA-256 `d985f4177c2bcd7b03455a05c1c8f2e755f55c9eb250accd052f05f877347e60`. A different checksum means the archive bytes differ; even repackaging the same files changes the ZIP fingerprint. Keep the original ZIP if you want to compare against that input exactly.
-
-Record the code version and any local changes as well:
-
-```bash
-git rev-parse HEAD
-git status --short
-```
-
-### 2. Create and check the 10 input cases
-
-Use explicit provider, model, and corpus options so the experiment does not depend on future default changes:
-
-```bash
-python src/repair_juliet.py "$JULIET_ZIP" \
-  --output "$JULIET_RUN" \
-  --per-cwe 1 \
-  --provider claude --model claude-opus-4-8 \
-  --corpus data/splits/rag/repairs.jsonl \
-  --prepare-only
-```
-
-Check the prepared CSV:
-
-```bash
-python - <<'PY'
-import csv
-import os
-from pathlib import Path
-
-run = Path(os.environ["JULIET_RUN"])
-with (run / "results.csv").open(newline="") as stream:
-    rows = list(csv.DictReader(stream))
-expected = {f"CWE-{n}" for n in (15, 78, 80, 81, 83, 89, 113, 129, 134, 606)}
-assert len(rows) == 10 and {r["cwe"] for r in rows} == expected
-assert all(r["status"] == "pending" and len(r["before_commit"]) == 40 for r in rows)
-assert all(not r["after_commit"] for r in rows)
-print("Prepared 10 unique CWEs with original hashes; no model calls made.")
-PY
-```
-
-If this check fails, inspect `summary.json` for extraction errors or missing CWE categories before continuing. A partial local dataset may contain fewer than the 10 supported categories.
-
-### 3. Generate the repairs
-
-Continue the prepared run using the same options:
-
-```bash
-python src/repair_juliet.py "$JULIET_ZIP" \
-  --output "$JULIET_RUN" \
-  --per-cwe 1 \
-  --provider claude --model claude-opus-4-8 \
-  --corpus data/splits/rag/repairs.jsonl \
-  --resume
-```
-
-This is the step that calls Claude through the authenticated CLI. It sends selected source/support files and eligible RAG examples to the model, applies valid edits, commits generated repairs, and updates the CSV after each case.
-
-If some cases fail, inspect their `reason` and logs. After addressing the problem, rerun the same command with `--retry-failed` added. Successful cases are retained, and failed-case retries get separate evidence folders.
-
-### 4. Inspect and compare the output
-
-```bash
-python - <<'PY'
-import csv
-import json
-import os
-from pathlib import Path
-
-run = Path(os.environ["JULIET_RUN"])
-summary = json.loads((run / "summary.json").read_text())
-print("Outcomes:", summary["counts"])
-with (run / "results.csv").open(newline="") as stream:
-    for row in csv.DictReader(stream):
-        print(row["cwe"], row["status"], row["before_commit"], row["after_commit"] or "no repair")
-        if row["evidence"]:
-            print("  Report:", run / row["evidence"])
-PY
-```
-
-For a successful direct run, the report's directory contains a `repository/` checkout. Inspect an individual pair with:
-
-```bash
-git -C /path/to/case/repository show ORIGINAL_HASH:path/to/Source.java
-git -C /path/to/case/repository show REPAIR_HASH:path/to/Source.java
-git -C /path/to/case/repository diff ORIGINAL_HASH REPAIR_HASH
-```
-
-Replace those paths and hashes with the row's `evidence`, `path`, `before_commit`, and `after_commit` values. Compare case IDs, statuses, retrieved examples, and actual patches with the published pilot. Model output can vary, and fresh input commits include new timestamps, so rerunning the experiment is not expected to reproduce identical commit hashes. To inspect the exact published versions, clone the [results repository](https://github.com/C-Garcia01/juliet-java-rag-repair-results) instead.
-
-Keep `summary.json`, the CSVs, and the full run directory together. The CSV references evidence and Git objects stored alongside it. If you want behavioral testing, start a separate run using `--validate` as described [below](#run-with-behavioral-validation); retain that flag when resuming it.
-
-### If the local dataset is not the original Juliet ZIP
-
-The current Juliet command accepts a ZIP with the expected Java layout and testcase naming conventions. It does not accept an extracted directory, an arbitrary CSV, or a different language's Juliet suite directly. For an extracted Java dataset, use its original ZIP or repackage it with `Java/` at the archive root; record the new checksum.
-
-For another dataset, create an adapter that selects vulnerable inputs, removes supplied reference fixes from the model's context, preserves provenance, and creates the input Git snapshots. A dataset of local Git revisions can use `repair_main.py SHA --repository PATH`, which currently follows the preparation-and-validation workflow. Hand-configured scenarios can also be passed to `repair_batch.py`; their format is documented in [REPAIR.md](REPAIR.md).
+A fresh run repeats the experiment, but model output and commit timestamps can differ. For the exact code and hashes from the published pilot, use the [results repository](https://github.com/C-Garcia01/juliet-java-rag-repair-results). The runner records the archive fingerprint and run settings automatically.
 
 ## How the repair pipeline works
 
