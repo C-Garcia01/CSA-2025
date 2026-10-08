@@ -19,6 +19,53 @@ The repository has two parts:
 All work targets old vulnerabilities that are already fixed upstream, for
 defensive research.
 
+## Repair a commit directly
+
+Give the repair runner a GitHub VCC commit URL. No scenario, CWE, output path,
+or saved fix is required:
+
+```bash
+python src/repair_main.py https://github.com/OWNER/REPO/commit/COMMIT_SHA
+```
+
+For a commit in your current local Git repository, supply just its SHA. Use
+`--repository /path/to/repo` when it belongs to another local repository.
+`--provider claude` selects Claude instead of the default Codex CLI. The selected
+CLI must be installed and authenticated.
+
+The pipeline clones the repository at that commit, inspects the change and
+bounded surrounding source/build/test context, and asks the model to infer the
+weakness and prepare build commands and behavioral tests. Missing harness files
+are committed as protected files before a separate model call generates the
+repair. The source repository is not changed. The runner first establishes a
+functional, vulnerable baseline, then applies and validates the generated fix.
+There is no saved-proposal fallback on this path.
+
+Results go automatically to a unique `data/runs/auto-.../` directory printed at
+startup. `result.json` records every outcome. Validated repairs also produce
+`repair.patch`, `history.bundle`, `pairs.jsonl` with before/after code, and
+`pairs.csv` with commit IDs and source hashes (without embedded code columns).
+The original VCC, prepared test commit, and fixed commit are separate fields.
+Failed runs leave an empty pairs export and a concrete reason in `result.json`.
+
+By default, retrieval uses up to two eligible historical examples from
+`data/splits/rag/repairs.jsonl`, excluding the target repository and seed group.
+No examples is supported. New targets are not automatically promoted into that
+corpus. Only the supplied revision and its change are sent to preparation;
+future fixes and evaluator reference files are not added to prompts.
+
+Automatic preparation can still fail on missing services, toolchains, excessive
+context, or an unproven weakness; such runs are inconclusive rather than accepted
+pairs. The model may use normal project-local build/dependency commands, but the
+runner does not provision arbitrary system packages, credentials, or services.
+Generated tests are not independent review or proof of whole-project security.
+Build and test commands execute locally, so use a disposable environment for
+unfamiliar repositories. Repository checkouts are not execution sandboxes.
+
+The input is a commit, not a dataset ZIP. Bulk dataset ingestion remains a
+separate adapter concern. Existing hand-configured scenarios remain supported
+for curated experiments, with `--output` now optional.
+
 ## Repair workflow
 
 ### How it works

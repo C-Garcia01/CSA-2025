@@ -28,12 +28,13 @@ class RepairAgent:
         self.provider = provider
         self.model = model
 
-    def generate(self, prompt, folder, timeout):
+    def generate(self, prompt, folder, timeout, schema_definition=None):
         folder = Path(folder)
         folder.mkdir()
         (folder / "prompt.txt").write_text(prompt, encoding="utf-8")
         schema = folder / "schema.json"
-        schema.write_text(json.dumps(REPAIR_SCHEMA), encoding="utf-8")
+        schema_definition = schema_definition or REPAIR_SCHEMA
+        schema.write_text(json.dumps(schema_definition), encoding="utf-8")
         reply = folder / "reply.json"
         if self.provider == "codex":
             command = ["codex", "exec", "--sandbox", "read-only", "--ephemeral", "--json",
@@ -42,14 +43,23 @@ class RepairAgent:
             command = ["claude", "-p", "--output-format", "json", "--tools", "",
                        "--strict-mcp-config", "--mcp-config", '{"mcpServers":{}}',
                        "--setting-sources", "", "--no-session-persistence",
-                       "--json-schema", json.dumps(REPAIR_SCHEMA)]
+                       "--json-schema", json.dumps(schema_definition)]
         else:
             raise ValueError("Choose codex or claude")
         if self.model:
             command += ["--model", self.model]
         result = run_command(command, folder, timeout, folder / "agent.log", prompt)
         if result["timed_out"] or result["returncode"] != 0:
-            raise RuntimeError(f"Agent failed; see {folder / 'agent.log'}")
+            detail = "timed out" if result["timed_out"] else f"exit {result['returncode']}"
+            for line in result.get("output", "").splitlines():
+                try:
+                    event = json.loads(line)
+                except ValueError:
+                    continue
+                if isinstance(event, dict) and event.get("type") == "error" and isinstance(event.get("message"), str):
+                    detail = event["message"][:2000]
+                    break
+            raise RuntimeError(f"Agent failed: {detail}; see {folder / 'agent.log'}")
         if self.provider == "claude":
             response = json.loads(result["output"])
             if response.get("is_error"):

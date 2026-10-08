@@ -116,9 +116,10 @@ def run_repair(config_path, output, provider="codex", model=None, prepare_only=F
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Repair a VCC using repository context and repair examples")
-    parser.add_argument("scenario")
-    parser.add_argument("--output", required=True)
+    parser = argparse.ArgumentParser(description="Repair a commit URL or local SHA; scenario JSON remains supported")
+    parser.add_argument("target", help="GitHub commit URL, SHA in the current repo, or scenario JSON")
+    parser.add_argument("--output", help="Optional output directory; otherwise a unique data/runs directory is created")
+    parser.add_argument("--repository", help="Repository for a bare SHA (defaults to current directory)")
     parser.add_argument("--provider", choices=["codex", "claude"], default="codex")
     parser.add_argument("--model")
     parser.add_argument("--prepare-only", action="store_true")
@@ -127,8 +128,17 @@ def main():
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     try:
-        report = run_repair(args.scenario, args.output, args.provider, args.model,
-                            args.prepare_only, args.proposal, args.corpus)
+        from repair_auto import output_path, run_auto
+        destination = args.output or str(output_path())
+        logging.info("Results: %s", Path(destination).resolve())
+        if Path(args.target).is_file():
+            report = run_repair(args.target, destination, args.provider, args.model,
+                                args.prepare_only, args.proposal, args.corpus)
+        else:
+            if args.proposal:
+                parser.error("--proposal is only supported for legacy scenario replay, not commit-only generation")
+            report = run_auto(args.target, destination, args.provider, args.model,
+                              args.corpus, args.repository, args.prepare_only)
     except (OSError, ValueError) as error:
         parser.error(str(error))
     print(json.dumps(report, indent=2))

@@ -182,3 +182,41 @@ Use `data/splits/rag/repairs.jsonl` as the corpus for split experiments.
 `data/README.md` describes the CSV importer, development/test queries and
 evaluator-only references. Coverage and missing CWEs are recorded in
 `data/splits/coverage.json`. These targets still require runtime scenarios.
+
+
+# Automatic preparation from a VCC
+
+`python src/repair_main.py <GitHub-commit-URL>` creates its output directory and
+uses the configured model for both preparation and repair. A bare SHA resolves
+in the current repository, or an optional `--repository` supplies its location.
+The original scenario JSON interface continues to work.
+
+`repair_auto.py` snapshots the supplied commit and gives a bounded inventory,
+changed files, commit diff, build files, existing tests and detected executable
+paths to a structured preparation call. The model returns a CWE, editable/context
+paths, argv commands, and any new files confined to `.vcc-generated/`. Existing
+files cannot be overwritten by preparation. Existing test paths are excluded
+from editable candidates; generated harnesses and every non-editable tracked
+file are protected by the existing hash checks. Generation uses at most two
+eligible historical RAG examples by default, with the existing exclusion rules.
+
+The preparation call cannot return production edits. The repair call uses the
+normal edits schema and cannot modify protected files. An established vulnerable
+baseline is required before invoking repair generation. A missing CLI, invalid
+plan, failed build, unproven vulnerability, or other setup error records an
+inconclusive result with no accepted pairs. Repair rejection is retained as a
+rejection. There is no automatic replay of saved fixes on the commit-only path.
+
+Accepted repairs are committed in the disposable checkout and exported to a
+Git bundle. `input_vcc` identifies the supplied commit; `prepared_revision`
+identifies the same production code plus generated checks; `fixed_commit`
+identifies its repaired child. CSV rows represent changed files, so a multi-file
+repair has several rows sharing those commit IDs. Full code is in `pairs.jsonl`;
+`pairs.csv` preserves metadata and SHA-256 hashes without code columns.
+
+The corpus remains read-only. New pairs require separate review and splitting
+before use as retrieval examples. Automatically generated validation is marked
+not independently reviewed. This is bounded, one-pass scenario preparation;
+it does not guarantee successful setup or repair of arbitrary repositories.
+`--prepare-only` still calls the preparation model, but skips build/tests and
+repair generation. Output directories are never overwritten.
